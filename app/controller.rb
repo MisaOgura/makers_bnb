@@ -1,4 +1,7 @@
+ENV['RACK_ENV'] ||= 'development'
+
 require 'sinatra/base'
+require_relative 'models/user'
 
 class SpaceBnB < Sinatra::Base
   get '/' do
@@ -7,9 +10,9 @@ class SpaceBnB < Sinatra::Base
 
   post '/register' do
     User.create(name: params[:name],
-             username: params[:username],
-             email: params[:email],
-             password: params[:password])
+                username: params[:username],
+                email: params[:email],
+                password: params[:password])
     redirect '/welcome'
 
   end
