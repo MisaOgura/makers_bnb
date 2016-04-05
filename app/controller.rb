@@ -5,7 +5,7 @@ require_relative 'models/space'
 
 class SpaceBnB < Sinatra::Base
   get '/spaces/new' do
-    send_file 'public/spaces/new.html'
+    send_file 'app/public/spaces/new.html'
   end
 
   post '/spaces' do

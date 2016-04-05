@@ -1,4 +1,5 @@
-require '../app/models/space.rb'
+require_relative '../app/models/space.rb'
+require_relative 'helpers'
 
 describe Space do
 
