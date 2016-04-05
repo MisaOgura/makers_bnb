@@ -4,8 +4,18 @@ require 'sinatra/base'
 require_relative 'models/user'
 
 class SpaceBnB < Sinatra::Base
+  enable :sessions
+
   get '/' do
     send_file 'app/public/user/new.html'
+  end
+
+  get '/log-in' do
+    send_file 'app/public/user/login.html'
+  end
+
+  post '/log-in' do
+    redirect '/welcome'
   end
 
   post '/register' do
@@ -14,7 +24,6 @@ class SpaceBnB < Sinatra::Base
                 email: params[:email],
                 password: params[:password])
     redirect '/welcome'
-
   end
 
   get '/welcome' do #placeholder
