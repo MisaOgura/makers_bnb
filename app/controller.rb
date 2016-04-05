@@ -5,7 +5,7 @@ require_relative 'models/user'
 
 class SpaceBnB < Sinatra::Base
   get '/' do
-    send_file 'public/user/new.html'
+    send_file 'app/public/user/new.html'
   end
 
   post '/register' do
@@ -18,7 +18,7 @@ class SpaceBnB < Sinatra::Base
   end
 
   get '/welcome' do #placeholder
-    send_file 'public/user/welcome.html'
+    send_file 'app/public/user/welcome.html'
   end
   # start the server if ruby file executed directly
   run! if app_file == $0
