@@ -1,10 +1,9 @@
+ENV["RACK_ENV"] ||= "development"
+
 require 'sinatra/base'
+require_relative 'models/space'
 
 class SpaceBnB < Sinatra::Base
-  get '/' do
-    send_file 'public/spaces/new.html'
-  end
-
   get '/spaces/new' do
     send_file 'public/spaces/new.html'
   end
@@ -17,7 +16,12 @@ class SpaceBnB < Sinatra::Base
   end
 
   get '/spaces/list' do
-    redirect 'spaces_list.html'
+    send_file 'public/spaces/list.html'
+  end
+
+  get '/spaces/all' do
+    # response.headers['Access-Control-Allow-Origin'] = '*'
+    allspaces = Space.first.name
   end
 
   # start the server if ruby file executed directly

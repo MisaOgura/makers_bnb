@@ -11,6 +11,6 @@ class Space
 
 end
 
-DataMapper.setup(:default, "postgres://localhost/spacebnb_test")
+DataMapper.setup(:default, "postgres://localhost/spacebnb_#{ENV['RACK_ENV']}")
 DataMapper.finalize
 DataMapper.auto_migrate!
