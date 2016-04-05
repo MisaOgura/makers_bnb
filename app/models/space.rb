@@ -1,6 +1,5 @@
 require 'data_mapper'
 require 'dm-postgres-adapter'
-require 'dm-validations'
 
 class Space
   include DataMapper::Resource
@@ -8,6 +7,7 @@ class Space
   property :id, Serial
   property :name, String
   property :description, String
+  property :price, Integer
 
 end
 
