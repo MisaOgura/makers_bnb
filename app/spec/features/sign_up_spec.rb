@@ -8,12 +8,13 @@ feature 'Sign Up' do
   end
 
   scenario 'requires user details' do
-    visit '/'
-    fill_in :name, with: name
-    fill_in :username, with: username
-    fill_in :email, with: email
-    fill_in :password, with: password
-    click_button 'Submit'
+    register
     expect(page).to have_content('Thanks, you have been signed up!')
+  end
+
+  scenario 'saves user in database' do
+    register
+    expect(User.count).to be(1)
+    expect(record.name).to eq name
   end
 end

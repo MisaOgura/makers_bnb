@@ -4,11 +4,11 @@ require 'dm-postgres-adapter'
 class User
   include DataMapper::Resource
 
-  property :id, Serial
-  property :name, String
+  property :id,       Serial
+  property :name,     String
   property :username, String
-  property :email, String
-  property :password, String
+  property :email,    String
+  property :password, Text
 end
 
 DataMapper.setup(:default, "postgres://localhost/spacebnb_test")

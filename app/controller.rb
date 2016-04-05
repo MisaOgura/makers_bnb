@@ -6,10 +6,15 @@ class SpaceBnB < Sinatra::Base
   end
 
   post '/register' do
+    User.create(name: params[:name],
+             username: params[:username],
+             email: params[:email],
+             password: params[:password])
     redirect '/welcome'
+
   end
 
-  get '/welcome' do
+  get '/welcome' do #placeholder
     send_file 'public/user/welcome.html'
   end
   # start the server if ruby file executed directly
