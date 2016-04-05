@@ -2,11 +2,11 @@ require 'sinatra/base'
 
 class SpaceBnB < Sinatra::Base
   get '/' do
-    'Hello SpaceBnB!'
+    send_file 'public/spaces/new.html'
   end
 
   get '/spaces/new' do
-    redirect 'spaces_new.html'
+    send_file 'public/spaces/new.html'
   end
 
   post '/spaces' do
