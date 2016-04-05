@@ -2,25 +2,25 @@ require '../app/models/space.rb'
 
 describe Space do
 
+  before(:each) do
+    Space.create(name: 'space1',
+                 description: 'One bedroom flat',
+                 price: 75)
+  end
+
   it 'adds a new space to database' do
-    expect{ Space.create }.to change(Space, :count).by(1)
+    expect(Space.all.count).to eq(1)
   end
 
   it 'should have a name' do
-    Space.create(name: 'space1')
     expect(Space.first.name).to eq('space1')
   end
 
   it 'should have a short description' do
-    Space.create(name: 'space1',
-                 description: 'One bedroom flat')
     expect(Space.first.description).to eq('One bedroom flat')
   end
 
   it 'should have a price' do
-    Space.create(name: 'space1',
-                 description: 'One bedroom flat',
-                 price: 75)
     expect(Space.first.price).to eq(75)
   end
 end
