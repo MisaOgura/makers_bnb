@@ -1,6 +1,6 @@
 ENV['RACK_ENV'] = 'test'
 
-require File.join(File.dirname(__FILE__), '..', 'controller.rb')
+require File.join(File.dirname(__FILE__), '..', 'app/controller.rb')
 
 require 'capybara'
 require 'capybara/rspec'
