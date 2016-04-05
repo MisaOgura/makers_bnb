@@ -2,7 +2,7 @@ require 'sinatra/base'
 
 class SpaceBnB < Sinatra::Base
   get '/' do
-    'Hello SpaceBnB!'
+    send_file 'public/index.html'
   end
 
   # start the server if ruby file executed directly
