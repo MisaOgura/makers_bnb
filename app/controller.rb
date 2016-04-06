@@ -50,12 +50,10 @@ class SpaceBnB < Sinatra::Base
   end
 
   post '/spaces' do
-    p params[:start_date], params[:end_date]
     Space.create(name: params[:name],
                  description: params[:description],
                  price: params[:price],
                  date: [params[:start_date], params[:end_date]])
-    p Space.first.date
     redirect '/spaces/list'
   end
 
@@ -73,7 +71,13 @@ class SpaceBnB < Sinatra::Base
             }.to_json
   end
 
+  post '/toggle' do
+    space = Space.first
+    space.update(available: false)
+    space.update(date: [])
+    redirect '/spaces/list'
+  end
+
   # start the server if ruby file executed directly
->>>>>>> master
   run! if app_file == $0
 end
