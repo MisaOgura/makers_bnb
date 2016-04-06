@@ -1,12 +1,17 @@
 <body>
   <div id='sign-up'>
     Welcome! Fill in your details below.
-    <form id="user_credentials" action='/register' method='post'>
-      Name:<input id='name' type=text required name='name'></input>
-      Username:<input id='username' type=text required name='username'></input>
-      Email:<input id='email' type=text required name='email'></input>
-      Password:<input id='password' type=text required name='password'></input>
+    <form id='user-credentials' action='/register' method='post'>
+      Name:<input id='name' type=text name='name'required> </input>
+      Username:<input id='username' type=text name='username' required></input>
+      Email:<input id='email' type=text name='email' required></input>
+      Password:<input id='password' type=text name='password' required></input>
       <button id='register'>Submit</button>
     </form>
+
+    <form id='login' action='/log-in'>
+      <button>Log in</button>
+    </form>
+
   </div>
 </body>
