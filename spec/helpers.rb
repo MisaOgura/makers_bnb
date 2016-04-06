@@ -24,6 +24,7 @@ def space_doubles
   let(:name) { 'property1'}
   let(:description) { 'one bedroom flat'}
   let(:price) { 75 }
+  let(:available) { true }
 
   let(:space) { Space.all.first }
 end
@@ -33,6 +34,7 @@ def add_space
   fill_in :name, with: name
   fill_in :description, with: description
   fill_in :price, with: price
+
   click_button 'List this space'
 end
 
