@@ -23,4 +23,31 @@ feature 'Sign Up' do
     expect{ wrong_pw_conf }.not_to change(User, :count)
     expect(current_path).to eq('/')
   end
+
+  scenario 'Cannot sign up without an email address' do
+    expect{ no_email }.not_to change(User, :count)
+  end
+
+  scenario 'Cannot sign up without username' do
+    expect{ no_username }.not_to change(User, :count)
+  end
+
+  scenario 'Cannot sign up without name' do
+    expect{ no_name }.not_to change(User, :count)
+  end
+
+  scenario 'Cannot sign up without an invalid email address' do
+    expect{ wrong_email_format }.not_to change(User, :count)
+  end
+
+  scenario 'Cannot sign up with an existing email address' do
+    sign_up
+    expect{ sign_up }.not_to change(User, :count)
+  end
+
+  scenario 'Cannot sign up with existing username' do
+    sign_up
+    expect{ duplicate_username }.not_to change(User, :count)
+  end
+
 end

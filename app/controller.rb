@@ -48,7 +48,7 @@ class SpaceBnB < Sinatra::Base
       session[:user_id] = @user.id
       redirect '/spaces/new'
     else
-      send_file 'app/public/user/new.html'
+      redirect '/'
     end
   end
 
