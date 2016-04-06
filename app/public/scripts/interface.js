@@ -8,7 +8,7 @@ $( document ).ready(function() {
       $('.space').attr('id', data.id);
       $('#name').text('Name: ' + data.name);
       $('#description').text('Description: ' + data.description);
-      $('#price').text('Price: ' + data.price);
+      $('#price').text('Price per night: £' + data.price);
     });
   }
 });
