@@ -8,7 +8,8 @@ $( document ).ready(function() {
       $('#description').text('Description: ' + data.description);
       $('#price').text('Price per night: £' + data.price);
       // var dates = dateRange(data);
-      $('#dates').text('Available dates:' + dates );
+      // console.log(dates);
+      $('#dates').text('Available dates: ' + data.date[0] + ' to ' + data.date[1] );
     });
   }
 
@@ -20,8 +21,12 @@ $( document ).ready(function() {
     var dateRange = [startDate];
     var currentDate = startDate;
     while (startDate <= endDate)
+      console.log(currentDate);
       currentDate.setDate(currentDate.getDate() + 1);
+      console.log(currentDate);
       dateRange.push(currentDate);
+      console.log(dateRange);
+
     return dateRange;
   }
 });
