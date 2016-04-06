@@ -2,7 +2,7 @@ require_relative '../helpers'
 
 feature "Adding new space" do
 
-  scenario "User can add a new space with name/desc/price" do
+  scenario "User can add a new space with name/desc/price", js: true do
     add_space
     expect(Space.all.count).to eq(1)
     expect(page).to have_content("Name: property1")

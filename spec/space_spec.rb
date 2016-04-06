@@ -1,7 +1,7 @@
 require_relative '../app/models/space.rb'
 require_relative 'helpers'
 
-describe Space do
+describe Space, driver: :selenium do
 
   before(:each) do
     Space.create(name: 'space1',
