@@ -2,9 +2,28 @@ ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
 require_relative 'models/space'
+require_relative 'models/user'
 require 'json'
 
 class SpaceBnB < Sinatra::Base
+
+  get '/' do
+    send_file 'app/public/user/new.html'
+  end
+
+  post '/register' do
+    User.create(name: params[:name],
+                username: params[:username],
+                email: params[:email],
+                password: params[:password])
+    redirect '/spaces/new'
+
+  end
+
+  # get '/welcome' do #placeholder
+  #   send_file 'app/public/user/welcome.html'
+  # end
+
   get '/spaces/new' do
     send_file 'app/public/spaces/new.html'
   end
@@ -21,13 +40,12 @@ class SpaceBnB < Sinatra::Base
   end
 
   get '/spaces/all' do
-    response.headers['Access-Control-Allow-Origin'] = '*'
     space = Space.first
-    { id: space.id,
-      name: space.name,
-      description: space.description,
-      price:space.price
-    }.to_json
+            { id: space.id,
+              name: space.name,
+              description: space.description,
+              price:space.price
+            }.to_json
   end
 
   # start the server if ruby file executed directly
