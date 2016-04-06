@@ -1,5 +1,3 @@
-require_relative '../helpers'
-
 feature "Adding new space" do
 
   scenario "User can add a new space with name/desc/price", js: true do

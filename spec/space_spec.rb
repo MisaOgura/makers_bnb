@@ -1,6 +1,3 @@
-require_relative '../app/models/space.rb'
-require_relative 'helpers'
-
 describe Space, driver: :selenium do
 
   before(:each) do

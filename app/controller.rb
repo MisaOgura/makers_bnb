@@ -13,7 +13,6 @@ class SpaceBnB < Sinatra::Base
     Space.create(name: params[:name],
                  description: params[:description],
                  price: params[:price])
-    p Space.all
     redirect '/spaces/list'
   end
 
@@ -22,7 +21,7 @@ class SpaceBnB < Sinatra::Base
   end
 
   get '/spaces/all' do
-    # response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Origin'] = '*'
     space = Space.first
     { id: space.id,
       name: space.name,
