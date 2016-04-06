@@ -1,13 +1,16 @@
 require 'data_mapper'
 require 'dm-postgres-adapter'
+require 'dm-postgres-types'
 
 class Space
   include DataMapper::Resource
 
-  property :id, Serial
-  property :name, String
+  property :id,          Serial
+  property :name,        String
   property :description, String
-  property :price, Integer
+  property :price,       Integer
+  property :available,   Boolean, default: true
+  property :date,        PgArray
 
 end
 
