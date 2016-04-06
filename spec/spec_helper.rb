@@ -10,6 +10,9 @@ require 'database_cleaner'
 require_relative 'support/wait_for_ajax.rb'
 require_relative '../app/models/space.rb'
 require_relative 'helpers'
+require 'capybara/poltergeist'
+
+Capybara.javascript_driver = :poltergeist
 
 Capybara.app = SpaceBnB
 
