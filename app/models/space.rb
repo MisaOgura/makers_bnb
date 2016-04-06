@@ -8,4 +8,5 @@ class Space
   property :available,   Boolean, default: true
   property :date,        PgArray
 
+  # belongs_to :user
 end

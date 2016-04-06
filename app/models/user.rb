@@ -7,6 +7,8 @@ class User
   property :email,    String
   property :password, String
 
+  # has n, :spaces
+
   def self.authenticate(email, password)
     user = first(email: email)
     if user.password == password
