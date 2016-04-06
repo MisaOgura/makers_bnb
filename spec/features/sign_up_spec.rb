@@ -9,7 +9,8 @@ feature 'Sign Up' do
 
   scenario 'requires user details' do
     register
-    expect(page).to have_content('Thanks, you have been signed up!')
+    expect(current_path).to eq '/spaces/new'
+    # expect(page).to have_content('Thanks, you have been signed up!')
   end
 
   scenario 'saves user in database' do
