@@ -5,6 +5,13 @@ def sign_up
               password: password)
 end
 
+def log_in
+  visit '/log-in'
+  fill_in :email, with: email
+  fill_in :password, with: password
+  click_button('Log in')
+end
+
 def new_space
   Space.create(name: name,
                description: description,

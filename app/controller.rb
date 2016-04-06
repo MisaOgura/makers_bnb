@@ -7,6 +7,7 @@ require 'json'
 
 class SpaceBnB < Sinatra::Base
   enable :sessions
+  use Rack::MethodOverride
 
   get '/' do
     send_file 'app/public/user/new.html'
@@ -29,6 +30,11 @@ class SpaceBnB < Sinatra::Base
       # flash error
       redirect 'app/public/user/login.html'
     end
+  end
+
+  delete '/log-out' do
+    session[:user_id] = nil
+    redirect '/'
   end
 
   post '/register' do
