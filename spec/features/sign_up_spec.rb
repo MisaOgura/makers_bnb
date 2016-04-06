@@ -18,4 +18,9 @@ feature 'Sign Up' do
     expect(User.count).to be(1)
     expect(record.name).to eq name
   end
+
+  scenario 'user must provide a valid password on sign up' do
+    expect{ wrong_pw_conf }.not_to change(User, :count)
+    expect(current_path).to eq('/')
+  end
 end

@@ -11,6 +11,7 @@ class SpaceBnB < Sinatra::Base
 
   get '/' do
     send_file 'app/public/user/new.html'
+    @user = User.new
   end
 
   get '/welcome' do #placeholder
@@ -38,12 +39,17 @@ class SpaceBnB < Sinatra::Base
   end
 
   post '/register' do
-    User.create(name: params[:name],
+    @user = User.new(name: params[:name],
                 username: params[:username],
                 email: params[:email],
-                password: params[:password])
-
-    redirect '/spaces/new'
+                password: params[:password],
+                password_confirmation: params[:password_confirmation])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect '/spaces/new'
+    else
+      send_file 'app/public/user/new.html'
+    end
   end
 
   get '/user/data' do

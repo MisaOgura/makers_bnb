@@ -1,5 +1,6 @@
 require_relative '../app/models/user'
 require_relative 'helpers'
+require 'bcrypt'
 
 describe User do
 
@@ -26,7 +27,11 @@ describe User do
   end
 
   it 'adds a password to user record' do
-    expect(record.password).to eq(password)
+    puts "hello"
+    p BCrypt::Password.new(password)
+    puts BCrypt::Password.new(password).to_s
+    p record.password
+    expect(record.password).to eq()
   end
 
 end
