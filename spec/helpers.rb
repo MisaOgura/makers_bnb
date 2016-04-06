@@ -18,7 +18,7 @@ def doubles
   let(:email) { 'bob@bobworld.com' }
   let(:password) { 'bobiscool1' }
 
-  let(:record) { User.all.first }
+  let(:record) { User.first }
 end
 
 def space_doubles

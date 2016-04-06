@@ -1,7 +1,3 @@
-require 'data_mapper'
-require 'dm-postgres-adapter'
-require 'dm-validations'
-
 class User
   include DataMapper::Resource
 
@@ -20,6 +16,3 @@ class User
     end
   end
 end
-DataMapper.setup(:default, "postgres://localhost/spacebnb_#{ENV['RACK_ENV']}")
-DataMapper.finalize
-DataMapper.auto_migrate!

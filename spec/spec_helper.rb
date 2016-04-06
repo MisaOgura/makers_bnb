@@ -8,7 +8,6 @@ require 'rspec'
 require 'data_mapper'
 require 'database_cleaner'
 require_relative 'support/wait_for_ajax.rb'
-require_relative '../app/models/space.rb'
 require_relative 'helpers'
 require 'capybara/poltergeist'
 
