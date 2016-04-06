@@ -5,6 +5,7 @@ feature 'User logs in' do
 
   doubles
 
+
   scenario 'takes user to log in page' do
     visit '/'
     click_button 'Log in'
@@ -12,11 +13,12 @@ feature 'User logs in' do
   end
 
   # scenario 'expect correct log in' do
+  #   sign_up
   #   visit '/log-in'
   #   fill_in :email, with: email
   #   fill_in :password, with: password
   #   click_button 'Log in'
-  #   expect(page).to have_content("Hey #{name}")
+  #   expect(page).to have_content("Hey, #{name}")
   # end
 
 end
