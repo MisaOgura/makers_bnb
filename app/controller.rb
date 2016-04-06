@@ -29,9 +29,12 @@ class SpaceBnB < Sinatra::Base
   end
 
   post '/spaces' do
+    p params[:start_date], params[:end_date]
     Space.create(name: params[:name],
                  description: params[:description],
-                 price: params[:price])
+                 price: params[:price],
+                 date: [params[:start_date], params[:end_date]])
+    p Space.first.date
     redirect '/spaces/list'
   end
 
@@ -44,7 +47,8 @@ class SpaceBnB < Sinatra::Base
             { id: space.id,
               name: space.name,
               description: space.description,
-              price:space.price
+              price: space.price,
+              date: space.date
             }.to_json
   end
 

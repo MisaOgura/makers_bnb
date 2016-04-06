@@ -1,5 +1,6 @@
 require 'data_mapper'
 require 'dm-postgres-adapter'
+require 'dm-postgres-types'
 
 class Space
   include DataMapper::Resource
@@ -9,6 +10,7 @@ class Space
   property :description, String
   property :price,       Integer
   property :available,   Boolean, default: true
+  property :date,        PgArray
 
 end
 
