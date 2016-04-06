@@ -10,12 +10,23 @@ class SpaceBnB < Sinatra::Base
     send_file 'app/public/user/new.html'
   end
 
+  get '/welcome' do #placeholder
+    send_file 'app/public/user/welcome.html'
+  end
+
   get '/log-in' do
     send_file 'app/public/user/login.html'
   end
 
   post '/log-in' do
-    redirect '/welcome'
+    user = User.authenticate(params[:email], params[:password])
+    if user
+      session[:user_id] = user.id
+      redirect '/welcome'
+    else
+      # flash error
+      redirect 'app/public/user/login.html'
+    end
   end
 
   post '/register' do
@@ -26,9 +37,5 @@ class SpaceBnB < Sinatra::Base
     redirect '/welcome'
   end
 
-  get '/welcome' do #placeholder
-    send_file 'app/public/user/welcome.html'
-  end
-  # start the server if ruby file executed directly
   run! if app_file == $0
 end
