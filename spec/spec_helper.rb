@@ -7,6 +7,12 @@ require 'capybara/rspec'
 require 'rspec'
 require 'data_mapper'
 require 'database_cleaner'
+require_relative 'support/wait_for_ajax.rb'
+require_relative '../app/models/space.rb'
+require_relative 'helpers'
+require 'capybara/poltergeist'
+
+Capybara.javascript_driver = :poltergeist
 
 Capybara.app = SpaceBnB
 
@@ -26,11 +32,18 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
+  config.before(:each, type: :feature) do
+    driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
+    if !driver_shares_db_connection_with_specs
+      DatabaseCleaner.strategy = :truncation
+    end
+  end
+
   config.before(:each) do
     DatabaseCleaner.start
   end
 
-  config.after(:each) do
+  config.append_after(:each) do
     DatabaseCleaner.clean
   end
 end
