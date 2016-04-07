@@ -18,12 +18,13 @@ $( document ).ready(function() {
 
       for (var i=0; i <= dates.length-1; i++){
         console.log(i);
-        $('#available_dates').append("<input class='available_dates' type='checkbox'></input>");
+        $('#available_dates').append("<label class='available_dates'><input type='checkbox'></label><br>");
         $('.available_dates').attr('class', 'available_dates'+i);
         $('.available_dates'+i).attr('id', i);
         date_string = dates[i].toString();
-        $('.available_dates'+i).text(date_string).appendTo('body');
+        $('.available_dates'+i).append(date_string);
       }
+
     });
   }
 
