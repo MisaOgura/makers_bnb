@@ -10,13 +10,13 @@ feature 'Sign Up' do
   scenario 'requires user details' do
     register
     expect(current_path).to eq '/spaces/new'
-    # expect(page).to have_content('Thanks, you have been signed up!')
   end
 
   scenario 'saves user in database' do
     register
     expect(User.count).to be(1)
     expect(record.name).to eq name
+    expect(Renter.count).to be(1)
   end
 
   scenario 'user must provide a valid password on sign up' do

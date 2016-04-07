@@ -5,6 +5,7 @@ require 'dm-postgres-types'
 require 'bcrypt'
 
 require_relative 'models/user'
+require_relative 'models/renter'
 require_relative 'models/space'
 
 DataMapper.setup(:default, "postgres://localhost/spacebnb_#{ENV['RACK_ENV']}")
