@@ -103,6 +103,18 @@ class SpaceBnB < Sinatra::Base
     redirect '/spaces/list'
   end
 
+  post '/space/book' do
+    space = Space.get(params[:book])
+    redirect '/space/book'
+  end
+
+  get '/space/book' do
+    'choose date'
+  end
+
+  get '/requests' do
+  end
+
   helpers do
     def current_user
       current_user ||= User.get(session[:user_id])

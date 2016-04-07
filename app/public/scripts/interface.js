@@ -8,15 +8,13 @@ $( document ).ready(function() {
       $('.space').append("<li id='description'></li>");
       $('.space').append("<li id='price'></li>");
       $('.space').append("<li id='dates'></li>");
-      $('.space').append("<form class='toggle' action='/toggle' method='post'>");
-      $('.toggle').attr('id', data.id);
+      $('#button').attr('value', data.id);
 
       $('#name').text('Name: ' + data.name);
       $('#description').text('Description: ' + data.description);
       $('#price').text('Price per night: £' + data.price);
       var dates = dateRange(data);
       $('#dates').text('Available dates: ' +  dates );
-      $('.toggle').append("<button>Unavailable</button>");
     });
   }
 

@@ -1,4 +1,4 @@
-feature 'Editing space', js: true, driver: :poltergeist do
+feature 'Editing space' do
   doubles
   space_doubles
 
