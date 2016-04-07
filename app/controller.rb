@@ -65,7 +65,7 @@ class SpaceBnB < Sinatra::Base
 
   post '/spaces' do
     user = User.first
-    user.spaces.create(name: params[:name],
+    user.spaces.create(name: params[:space_name],
                        description: params[:description],
                        price: params[:price],
                        date: [params[:start_date], params[:end_date]])
