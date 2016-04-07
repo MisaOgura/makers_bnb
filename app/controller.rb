@@ -109,7 +109,7 @@ class SpaceBnB < Sinatra::Base
   end
 
   get '/space/book' do
-    'choose date'
+    send_file 'app/public/spaces/booking.html'
   end
 
   get '/requests' do

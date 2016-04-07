@@ -2,6 +2,7 @@ $( document ).ready(function() {
 
   function listAllSpaces() {
     $.getJSON('http://localhost:4567/spaces/all', function(data) {
+      var dates = dateRange(data);
       $('.all_spaces').append("<div class='space'></div>");
       $('.space').attr('id', data.id);
       $('.space').append("<p id='name'> 'Name: '</p>");
@@ -13,8 +14,16 @@ $( document ).ready(function() {
       $('#name').text('Name: ' + data.name);
       $('#description').text('Description: ' + data.description);
       $('#price').text('Price per night: £' + data.price);
-      var dates = dateRange(data);
       $('#dates').text('Available dates: ' +  dates );
+
+      for (var i=0; i <= dates.length-1; i++){
+        console.log(i);
+        $('#available_dates').append("<input class='available_dates' type='checkbox'></input>");
+        $('.available_dates').attr('class', 'available_dates'+i);
+        $('.available_dates'+i).attr('id', i);
+        date_string = dates[i].toString();
+        $('.available_dates'+i).text(date_string).appendTo('body');
+      }
     });
   }
 
