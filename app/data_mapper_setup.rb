@@ -9,4 +9,6 @@ require_relative 'models/space'
 
 DataMapper.setup(:default, "postgres://localhost/spacebnb_#{ENV['RACK_ENV']}")
 DataMapper.finalize
-DataMapper.auto_migrate!
+if ENV['RACK_ENV'] == 'test'
+  DataMapper.auto_migrate!
+end
