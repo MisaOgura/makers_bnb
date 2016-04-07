@@ -40,19 +40,16 @@ class SpaceBnB < Sinatra::Base
 
   end
 
-  # get '/welcome' do #placeholder
-  #   send_file 'app/public/user/welcome.html'
-  # end
-
   get '/spaces/new' do
     send_file 'app/public/spaces/new.html'
   end
 
   post '/spaces' do
-    Space.create(name: params[:name],
-                 description: params[:description],
-                 price: params[:price],
-                 date: [params[:start_date], params[:end_date]])
+    user = User.first
+    user.spaces.create(name: params[:name],
+                       description: params[:description],
+                       price: params[:price],
+                       date: [params[:start_date], params[:end_date]])
     redirect '/spaces/list'
   end
 

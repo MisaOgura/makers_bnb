@@ -1,12 +1,11 @@
-describe Space, driver: :selenium do
+describe Space do
 
+  doubles
   space_doubles
 
   before do
-    Space.create(name: name,
-                 description: description,
-                 price: price,
-                 date: [start_date, end_date])
+    sign_up
+    add_space
   end
 
   it 'adds a new space to database' do
