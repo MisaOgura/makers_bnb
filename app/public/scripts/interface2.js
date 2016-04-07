@@ -16,7 +16,7 @@ $( document ).ready(function() {
       $('#price').text('Price per night: £' + data.price);
       var dates = dateRange(data);
       $('#dates').text('Available dates: ' +  dates );
-      $('.toggle').append("<button>Unavailable</button>");
+      $('.toggle').append("<button>Book this space</button>");
     });
   }
 

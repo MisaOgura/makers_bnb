@@ -13,5 +13,4 @@ feature "Booking a space" do
       expect(page).to have_selector(".space")
     end
   end
-
 end
