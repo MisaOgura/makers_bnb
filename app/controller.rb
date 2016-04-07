@@ -63,6 +63,7 @@ class SpaceBnB < Sinatra::Base
     send_file 'app/public/spaces/new.html'
   end
 
+
   post '/spaces' do
     user = User.first
     user.spaces.create(name: params[:space_name],
@@ -84,6 +85,11 @@ class SpaceBnB < Sinatra::Base
               price: space.price,
               date: space.date
             }.to_json
+  end
+
+  get '/spaces/filter' do
+    filter = {first_date: params[:first_date],
+    last_date: params[:last_date]}.to_json
   end
 
   post '/toggle' do

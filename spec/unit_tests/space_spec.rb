@@ -13,7 +13,7 @@ describe Space do
   end
 
   it 'should have a name' do
-    expect(space.name).to eq name
+    expect(space.name).to eq space_name
   end
 
   it 'should have a short description' do

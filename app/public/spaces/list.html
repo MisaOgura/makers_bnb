@@ -5,7 +5,7 @@
 <body>
   List of spaces
   <div class='space'>
-    <p id='name'></p>
+    <p id='space_name'></p>
     <p id='description'></p>
     <p id='price'></p>
     <p id='dates'></p>
@@ -13,6 +13,15 @@
       <button>Unavailable</button>
     </form>
   </div>
+
+  <form action='/spaces/filter'>
+    <input type='text' name='first_date' placeholder='enter start date'>
+    <input type='text' name='last_date' placeholder='enter start date'>
+    <button>Find spaces</button>
+
+  </form>
+
+
   <script src="../scripts/interface.js"></script>
   <script src="../scripts/moment.min.js"></script>
 </body>
