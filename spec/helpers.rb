@@ -43,7 +43,7 @@ end
 
 def add_space
   visit '/spaces/new'
-  fill_in :name, with: name
+  fill_in :space_name, with: name
   fill_in :description, with: description
   fill_in :price, with: price
   fill_in :start_date, with: start_date
