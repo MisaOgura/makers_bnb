@@ -1,8 +1,3 @@
-require 'data_mapper'
-require 'dm-postgres-adapter'
-require 'dm-validations'
-require 'bcrypt'
-
 class User
   include DataMapper::Resource
 
@@ -22,6 +17,8 @@ class User
     self.password_digest = BCrypt::Password.create(password)
   end
 
+  has n, :spaces
+
   def self.authenticate(email, password)
     user = first(email: email)
     if user && BCrypt::Password.new(user.password_digest) == password
@@ -31,6 +28,3 @@ class User
     end
   end
 end
-DataMapper.setup(:default, "postgres://localhost/spacebnb_#{ENV['RACK_ENV']}")
-DataMapper.finalize
-DataMapper.auto_migrate!
