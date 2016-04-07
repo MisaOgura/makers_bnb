@@ -2,7 +2,15 @@ def sign_up
   User.create(name: name,
               username: username,
               email: email,
-              password: password)
+              password: password,
+              password_confirmation: password_confirmation)
+end
+
+def log_in
+  visit '/log-in'
+  fill_in :email, with: email
+  fill_in :password, with: password
+  click_button('Log in')
 end
 
 def new_space
@@ -17,6 +25,7 @@ def doubles
   let(:username) { 'bob4lyfe' }
   let(:email) { 'bob@bobworld.com' }
   let(:password) { 'bobiscool1' }
+  let(:password_confirmation) { 'bobiscool1' }
 
   let(:record) { User.first }
 end
@@ -48,5 +57,63 @@ def register
   fill_in :username, with: username
   fill_in :email, with: email
   fill_in :password, with: password
+  fill_in :password_confirmation, with: password_confirmation
+  click_button 'Submit'
+end
+
+def wrong_pw_conf
+  visit '/'
+  fill_in :name, with: name
+  fill_in :username, with: username
+  fill_in :email, with: email
+  fill_in :password, with: password
+  fill_in :password_confirmation, with: "wrong"
+  click_button 'Submit'
+end
+
+def wrong_email_format
+  visit '/'
+  fill_in :name, with: name
+  fill_in :username, with: username
+  fill_in :email, with: "email@email"
+  fill_in :password, with: password
+  fill_in :password_confirmation, with: password
+  click_button 'Submit'
+end
+
+def duplicate_username
+  visit '/'
+  fill_in :name, with: name
+  fill_in :username, with: username
+  fill_in :email, with: "email@email.com"
+  fill_in :password, with: password
+  fill_in :password_confirmation, with: password_confirmation
+  click_button 'Submit'
+end
+
+def no_email
+  visit '/'
+  fill_in :name, with: name
+  fill_in :username, with: username
+  fill_in :password, with: password
+  fill_in :password_confirmation, with: password_confirmation
+  click_button 'Submit'
+end
+
+def no_username
+  visit '/'
+  fill_in :name, with: name
+  fill_in :email, with: email
+  fill_in :password, with: password
+  fill_in :password_confirmation, with: password_confirmation
+  click_button 'Submit'
+end
+
+def no_name
+  visit '/'
+  fill_in :email, with: email
+  fill_in :username, with: username
+  fill_in :password, with: password
+  fill_in :password_confirmation, with: password_confirmation
   click_button 'Submit'
 end

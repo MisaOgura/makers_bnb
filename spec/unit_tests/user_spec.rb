@@ -6,10 +6,11 @@ describe User do
     @user = User.create(name: "Tina",
                 username: "T_Turnip",
                 email: "tina@turnip.com",
-                password: "t1na1sc00l")
+                password: "t1na1sc00l",
+                password_confirmation: "t1na1sc00l")
   end
 
-  it 'can creare a new user' do
+  it 'can create a new user' do
     expect(User.first.name).to eq "Tina"
   end
 

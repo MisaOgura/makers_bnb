@@ -6,9 +6,11 @@ require 'json'
 
 class SpaceBnB < Sinatra::Base
   enable :sessions
+  use Rack::MethodOverride
 
   get '/' do
     send_file 'app/public/user/new.html'
+    @user = User.new
   end
 
   get '/welcome' do #placeholder
@@ -30,14 +32,31 @@ class SpaceBnB < Sinatra::Base
     end
   end
 
+  delete '/log-out' do
+    session[:user_id] = nil
+    redirect '/'
+  end
+
   post '/register' do
-    User.create(name: params[:name],
+    @user = User.new(name: params[:name],
                 username: params[:username],
                 email: params[:email],
-                password: params[:password])
+                password: params[:password],
+                password_confirmation: params[:password_confirmation])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect '/spaces/new'
+    else
+      redirect '/'
+    end
+  end
 
-    redirect '/spaces/new'
-
+  get '/user/data' do
+    user_data = User.first
+                { id: user_data.id,
+                  name: user_data.name,
+                  username: user_data.username,
+                  email: user_data.email}.to_json
   end
 
   get '/spaces/new' do

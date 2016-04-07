@@ -1,5 +1,20 @@
+<head>
+  <script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
+  </script>
+</head>
+
+
 <body>
+  <form action='/log-out' method='post'>
+    <input type='hidden' name='_method' value='delete'>
+    <button id='log_out'>Log out</button>
+  </form>
   Thanks, you have been signed up!
 
-  Hey notBob
+<div class='user'>
+  <p id='name'></p>
+</div>
+
+  <script src="../scripts/interface.js"></script>
 </body>
