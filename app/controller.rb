@@ -28,7 +28,7 @@ class SpaceBnB < Sinatra::Base
       redirect '/welcome'
     else
       # flash error
-      redirect 'app/public/user/login.html'
+      redirect '/log-in'
     end
   end
 
@@ -70,6 +70,7 @@ class SpaceBnB < Sinatra::Base
   end
 
   get '/spaces' do
+    send_file 'app/public/spaces/index.html'
   end
 
   post '/spaces/new' do
@@ -78,7 +79,7 @@ class SpaceBnB < Sinatra::Base
                 description: params[:description],
                 price: params[:price],
                 date: [params[:start_date], params[:end_date]])
-    redirect '/spaces/list'
+    redirect '/spaces'
   end
 
   get '/spaces/list' do
@@ -86,7 +87,7 @@ class SpaceBnB < Sinatra::Base
   end
 
   get '/spaces/all' do
-    space = Space.first
+    space = Space.last
             { id: space.id,
               name: space.name,
               description: space.description,
@@ -96,7 +97,7 @@ class SpaceBnB < Sinatra::Base
   end
 
   post '/toggle' do
-    space = Space.first
+    space = Space.last
     space.update(available: false)
     space.update(date: [])
     redirect '/spaces/list'

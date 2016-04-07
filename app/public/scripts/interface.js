@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-  alert("working");
 
   function listAllSpaces() {
     $.getJSON('http://localhost:4567/spaces/all', function(data) {
