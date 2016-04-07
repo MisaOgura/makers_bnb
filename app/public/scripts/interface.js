@@ -1,5 +1,24 @@
 $( document ).ready(function() {
 
+  listAllSpaces();
+  returnUserData();
+
+  $( document ).ajaxComplete(function(){
+    $('input[type=checkbox]').on('change', function(){
+      console.log($('input[type=checkbox]:checked').length);
+      if ($('input[type=checkbox]:checked').length <= 2) {
+        $(this).attr('checked', 'yes');
+        var first_date = $('#request_book').attr('value');
+        var second_date = $(this).val();
+        $('#request_book').attr('value', first_date + second_date);
+      }
+      else {
+          $(this).prop('checked', false);
+          alert('You can only tick two boxes');
+      }
+    });
+  });
+
   function listAllSpaces() {
     $.getJSON('http://localhost:4567/spaces/all', function(data) {
       var dates = dateRange(data);
@@ -17,18 +36,17 @@ $( document ).ready(function() {
       $('#dates').text('Available dates: ' +  dates );
 
       for (var i=0; i <= dates.length-1; i++){
-        console.log(i);
-        $('#available_dates').append("<label class='available_dates'><input type='checkbox'></label><br>");
+        $('#available_dates').append("<input class='box' type='checkbox'><label class='available_dates'></label><br>");
         $('.available_dates').attr('class', 'available_dates'+i);
-        $('.available_dates'+i).attr('id', i);
+        $('.box').attr('class', 'box'+i);
+        $('.available_dates'+i).attr('for', i);
+        $('.box'+i).attr('id', i);
         date_string = dates[i].toString();
         $('.available_dates'+i).append(date_string);
+        $('.box'+i).attr('value', date_string);
       }
-
     });
   }
-
-  listAllSpaces();
 
   function returnUserData() {
     $.getJSON('http://localhost:4567/user/data', function(data) {
@@ -36,8 +54,6 @@ $( document ).ready(function() {
       $('#name').text('Hey, ' + data.name);
     });
   }
-
-  returnUserData();
 
   function dateRange(data){
     var startDate = new Date(data.date[0]);
