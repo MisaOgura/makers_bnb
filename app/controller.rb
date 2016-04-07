@@ -1,8 +1,7 @@
 ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
-require_relative 'models/space'
-require_relative 'models/user'
+require_relative 'data_mapper_setup'
 require 'json'
 
 class SpaceBnB < Sinatra::Base
@@ -41,19 +40,16 @@ class SpaceBnB < Sinatra::Base
 
   end
 
-  # get '/welcome' do #placeholder
-  #   send_file 'app/public/user/welcome.html'
-  # end
-
   get '/spaces/new' do
     send_file 'app/public/spaces/new.html'
   end
 
   post '/spaces' do
-    Space.create(name: params[:name],
-                 description: params[:description],
-                 price: params[:price],
-                 date: [params[:start_date], params[:end_date]])
+    user = User.first
+    user.spaces.create(name: params[:name],
+                       description: params[:description],
+                       price: params[:price],
+                       date: [params[:start_date], params[:end_date]])
     redirect '/spaces/list'
   end
 
@@ -76,6 +72,12 @@ class SpaceBnB < Sinatra::Base
     space.update(available: false)
     space.update(date: [])
     redirect '/spaces/list'
+  end
+
+  helpers do
+    def current_user
+      current_user ||= User.get(session[:user_id])
+    end
   end
 
   # start the server if ruby file executed directly

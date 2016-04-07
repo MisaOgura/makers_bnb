@@ -1,7 +1,3 @@
-require 'data_mapper'
-require 'dm-postgres-adapter'
-require 'dm-validations'
-
 class User
   include DataMapper::Resource
 
@@ -10,6 +6,8 @@ class User
   property :username, String
   property :email,    String
   property :password, String
+
+  has n, :spaces
 
   def self.authenticate(email, password)
     user = first(email: email)
@@ -20,6 +18,3 @@ class User
     end
   end
 end
-DataMapper.setup(:default, "postgres://localhost/spacebnb_#{ENV['RACK_ENV']}")
-DataMapper.finalize
-DataMapper.auto_migrate!

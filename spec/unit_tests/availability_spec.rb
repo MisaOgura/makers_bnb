@@ -1,8 +1,10 @@
 describe Space do
+  doubles
   space_doubles
 
   before do
-    new_space
+    sign_up
+    add_space
   end
 
   it 'is available by default on creation' do
@@ -10,7 +12,6 @@ describe Space do
   end
 
   it 'allows user to set start/end date' do
-    p space.date
     expect(space.date).to eq([start_date, end_date])
   end
 end

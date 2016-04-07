@@ -1,7 +1,3 @@
-require 'data_mapper'
-require 'dm-postgres-adapter'
-require 'dm-postgres-types'
-
 class Space
   include DataMapper::Resource
 
@@ -12,8 +8,6 @@ class Space
   property :available,   Boolean, default: true
   property :date,        PgArray
 
+  belongs_to :user
+  
 end
-
-DataMapper.setup(:default, "postgres://localhost/spacebnb_#{ENV['RACK_ENV']}")
-DataMapper.finalize
-DataMapper.auto_migrate!

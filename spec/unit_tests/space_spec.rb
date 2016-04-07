@@ -1,9 +1,11 @@
-describe Space, driver: :selenium do
+describe Space do
 
+  doubles
   space_doubles
 
   before do
-    new_space
+    sign_up
+    add_space
   end
 
   it 'adds a new space to database' do
