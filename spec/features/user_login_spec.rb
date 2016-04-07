@@ -12,13 +12,4 @@ feature 'User logs in' do
     expect(page).to have_content("Enter your username and password to log in")
   end
 
-  # scenario 'expect correct log in' do
-  #   sign_up
-  #   visit '/log-in'
-  #   fill_in :email, with: email
-  #   fill_in :password, with: password
-  #   click_button 'Log in'
-  #   expect(page).to have_content("Hey, #{name}")
-  # end
-
 end
