@@ -9,7 +9,7 @@ feature 'Sign Up' do
 
   scenario 'requires user details' do
     register
-    expect(current_path).to eq '/spaces/new'
+    expect(current_path).to eq '/spaces'
   end
 
   scenario 'saves user in database' do
@@ -17,6 +17,7 @@ feature 'Sign Up' do
     expect(User.count).to be(1)
     expect(record.name).to eq name
     expect(Renter.count).to be(1)
+    expect(current_path).to eq('/spaces')
   end
 
   scenario 'user must provide a valid password on sign up' do

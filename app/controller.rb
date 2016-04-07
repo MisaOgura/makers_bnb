@@ -51,7 +51,7 @@ class SpaceBnB < Sinatra::Base
                 password_confirmation: params[:password_confirmation])
     if user.save
       session[:user_id] = user.id
-      redirect '/spaces/new'
+      redirect '/spaces'
     else
       redirect '/'
     end
@@ -69,7 +69,10 @@ class SpaceBnB < Sinatra::Base
     send_file 'app/public/spaces/new.html'
   end
 
-  post '/spaces' do
+  get '/spaces' do
+  end
+
+  post '/spaces/new' do
     user = current_user
     user.spaces.create(name: params[:name],
                 description: params[:description],
