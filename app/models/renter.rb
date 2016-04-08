@@ -1,4 +1,4 @@
-class User
+class Renter
   include DataMapper::Resource
 
   attr_reader :password
@@ -17,7 +17,6 @@ class User
     self.password_digest = BCrypt::Password.create(password)
   end
 
-  has n, :spaces
   has n, :requests
 
   def self.authenticate(email, password)

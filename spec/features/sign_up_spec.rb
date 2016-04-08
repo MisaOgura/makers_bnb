@@ -9,14 +9,15 @@ feature 'Sign Up' do
 
   scenario 'requires user details' do
     register
-    expect(current_path).to eq '/spaces/new'
-    # expect(page).to have_content('Thanks, you have been signed up!')
+    expect(current_path).to eq '/spaces'
   end
 
   scenario 'saves user in database' do
     register
     expect(User.count).to be(1)
     expect(record.name).to eq name
+    expect(Renter.count).to be(1)
+    expect(current_path).to eq('/spaces')
   end
 
   scenario 'user must provide a valid password on sign up' do
@@ -39,15 +40,4 @@ feature 'Sign Up' do
   scenario 'Cannot sign up without an invalid email address' do
     expect{ wrong_email_format }.not_to change(User, :count)
   end
-
-  scenario 'Cannot sign up with an existing email address' do
-    sign_up
-    expect{ sign_up }.not_to change(User, :count)
-  end
-
-  scenario 'Cannot sign up with existing username' do
-    sign_up
-    expect{ duplicate_username }.not_to change(User, :count)
-  end
-
 end

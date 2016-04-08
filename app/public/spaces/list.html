@@ -12,22 +12,17 @@
 
 <body>
   List of spaces
-  <div class='space'>
-    <p id='space_name'></p>
-    <p id='description'></p>
-    <p id='price'></p>
-    <p id='dates'></p>
-    <form action='/toggle' method='post'>
-      <button>Unavailable</button>
-    </form>
+  <div class="all_spaces">
   </div>
+  <form class='toggle' action='/toggle' method='post'>
+    <button id='button' name='unavailable'>Unavailable</button>
+  </form>
 
   <form action='/spaces/filterdates' method="post">
     <input type='text' name='first_date' class='datepicker' placeholder='enter start date'>
     <input type='text' name='last_date' class='datepicker' placeholder='enter end date'>
     <button>Find spaces</button>
   </form>
-
 
   <script src="../scripts/interface.js"></script>
   <script src="../scripts/moment.min.js"></script>

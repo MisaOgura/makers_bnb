@@ -3,11 +3,12 @@ feature 'Editing space' do
   space_doubles
 
   before do
-    sign_up
+    register
     add_space
   end
 
-  scenario 'Space-owner can tggle availability' do
+  scenario 'Space-owner can toggle availability' do
+    visit '/spaces/list'
     click_button('Unavailable')
     expect(space.available).to eq(false)
     expect(space.date).to eq([])

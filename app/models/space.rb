@@ -9,5 +9,6 @@ class Space
   property :date,        PgArray
 
   belongs_to :user
-  
+  has n, :requests
+
 end
