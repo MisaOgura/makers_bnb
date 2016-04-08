@@ -43,7 +43,7 @@ end
 
 def filter_doubles
   let(:first_date) { '04/11/2016' }
-  let(:last_date) { '04/13/2016' }
+  let(:last_date) { '04/12/2016' }
 end
 
 def add_space
