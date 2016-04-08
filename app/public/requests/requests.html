@@ -4,6 +4,15 @@
 
 <body>
   <div class='all_requests_received'></div>
+
+  <form action='/requests/confirm' method='post'>
+    <input id='request_id' name='request_id' type='hidden'>
+    <input type='submit' value='Confirm Request'>
+  </form>
+
+  <form>
+  </form>
+
   <script src="../scripts/interface.js"></script>
   <script src="../scripts/moment.min.js"></script>
 </body>

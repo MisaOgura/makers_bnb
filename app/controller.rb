@@ -116,7 +116,8 @@ class SpaceBnB < Sinatra::Base
 
   get '/requests/received' do
     request = Request.last
-              {space_name: request.space.name,
+              {id: request.id,
+               space_name: request.space.name,
                confirmation_status: request.confirmed,
                date: request.date,
                denied_status: request.denied
@@ -131,6 +132,12 @@ class SpaceBnB < Sinatra::Base
     request.user_id = space.user.id
     request.space_id = space.id
     request.save
+    redirect '/requests'
+  end
+
+  post '/requests/confirm' do
+    request = Request.get(params[:request_id])
+    request.update(confirmed: true)
     redirect '/requests'
   end
 

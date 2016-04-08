@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-  
+
   listAllSpaces();
   returnUserData();
   listRequest();
@@ -99,6 +99,7 @@ $( document ).ready(function() {
       $('.request_received').append("<li id='confirmation_status'></li>");
       $('.request_received').append("<li id='start_date'></li>");
       $('.request_received').append("<li id='end_date'></li>");
+      $('#request_id').attr('value', data.id);
 
       $('#requested_name').text("Space name: " + data.space_name);
       if(data.confirmation_status === false) {
