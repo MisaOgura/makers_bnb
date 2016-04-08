@@ -21,7 +21,12 @@ h6 {
 }
 
 #user-credentials {
-  padding: 33px;
+  padding: 30px;
   padding-top: 0;
 
+}
+
+input {
+  margin: 4px;
+  padding: 3px;
 }
