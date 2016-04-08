@@ -1,12 +1,16 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/stylesheets/master.css">
+</head>
 <body>
-  <div id='sign-up'>
-    Welcome! Fill in your details below.
+  <div class='credentials'>
+    <h6>Welcome!
+      <p>Fill in your details below.<p></h6>
     <form id='user-credentials' action='/register' method='post'>
-      Name:<input id='name' type=text name='name'required> </input>
-      Username:<input id='username' type=text name='username' required></input>
-      Email:<input id='email' type=text name='email' required></input>
-      Password:<input id='password' type=text name='password' required></input>
-      Confirmation:<input id='password_confirmation' type=text name='password_confirmation' required></input>
+      <input id='name' type=text name='name' placeholder='Your name' required> </input>
+      <input id='username' type=text name='username' placeholder='Username' required></input>
+      <input id='email' type=text name='email' placeholder='Your email' required></input>
+      <input id='password' type=password name='password' placeholder='Password' required></input>
+      <input id='password_confirmation' type=password name='password_confirmation' placeholder='Confirm password' required></input>
       <button id='register'>Submit</button>
     </form>
 

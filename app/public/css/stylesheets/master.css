@@ -1,0 +1,27 @@
+body {
+  background-color: #DEDFCD;
+  font-family: HelveticaNeue-light, Helvetica, Arial, sans-serif;
+}
+
+h6 {
+  margin: relative;
+  text-align: center;
+  padding: 15px;
+  padding-bottom: 0;
+}
+
+.credentials {
+  background-color: #B7C4B0;
+  height: relative;
+  width: 200px;
+  margin: auto;
+  margin-top: 50;
+  border-radius: 4px;
+
+}
+
+#user-credentials {
+  padding: 33;
+  padding-top: 0;
+
+}
