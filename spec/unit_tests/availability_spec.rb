@@ -1,10 +1,12 @@
 describe Space do
   doubles
   space_doubles
+  filter_doubles
 
   before do
     register
     add_space
+
   end
 
   it 'is available by default on creation' do

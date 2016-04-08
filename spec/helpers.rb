@@ -31,19 +31,24 @@ def doubles
 end
 
 def space_doubles
-  let(:name) { 'property1'}
+  let(:space_name) { 'property1'}
   let(:description) { 'one bedroom flat'}
   let(:price) { 75 }
   let(:available) { true }
-  let(:start_date) { '10/04/2016' }
-  let(:end_date) { '15/04/2016' }
+  let(:start_date) { '04/10/2016' }
+  let(:end_date) { '04/15/2016' }
 
-  let(:space) { Space.all.first }
+  let(:space) { Space.first }
+end
+
+def filter_doubles
+  let(:first_date) { '04/11/2016' }
+  let(:last_date) { '04/12/2016' }
 end
 
 def add_space
   visit '/spaces/new'
-  fill_in :name, with: name
+  fill_in :space_name, with: space_name
   fill_in :description, with: description
   fill_in :price, with: price
   fill_in :start_date, with: start_date

@@ -1,13 +1,24 @@
-<head>
-</head>
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="../scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery-ui/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/scripts/jquery-ui/jquery-ui.css">
+    <script>
+    $(function() {
+      $( ".datepicker" ).datepicker();
+    });
+    </script>
+  </head>
 
-<body>
-  <form action='/spaces/new' method='post'>
-    <input type=text name="name" placeholder="Name of the space...">
-    <input type=text name="description" placeholder="Give a short description...">
-    <input type=text name="price" placeholder="Price...">
-    Start date:<input type=date name='start_date'>
-    End date:<input type=date name='end_date'>
-    <input type=submit value="List this space"></input>
-  </form>
-</body>
+  <body>
+    <form action='/spaces/new' method='post'>
+      <input type=text name="space_name" placeholder="Name of the space...">
+      <input type=text name="description" placeholder="Give a short description...">
+      <input type=text name="price" placeholder="Price...">
+      <input class="datepicker" type=text placeholder="start date" name='start_date'>
+      <input class="datepicker" type=text placeholder="end date" name='end_date'>
+      <input type=submit value="List this space"></input>
+    </form>
+  </body>
+</html>

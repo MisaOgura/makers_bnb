@@ -10,10 +10,9 @@ class SpaceBnB < Sinatra::Base
 
   get '/' do
     send_file 'app/public/user/new.html'
-    # @user = User.new
   end
 
-  get '/welcome' do #placeholder
+  get '/welcome' do
     send_file 'app/public/user/welcome.html'
   end
 
@@ -27,7 +26,6 @@ class SpaceBnB < Sinatra::Base
       session[:user_id] = user.id
       redirect '/welcome'
     else
-      # flash error
       redirect '/log-in'
     end
   end
@@ -75,7 +73,7 @@ class SpaceBnB < Sinatra::Base
 
   post '/spaces/new' do
     user = current_user
-    user.spaces.create(name: params[:name],
+    user.spaces.create(name: params[:space_name],
                 description: params[:description],
                 price: params[:price],
                 date: [params[:start_date], params[:end_date]])
@@ -124,6 +122,23 @@ class SpaceBnB < Sinatra::Base
     request.space_id = space.id
     request.save
     redirect '/requests'
+  end
+
+  get '/spaces/filter-list' do
+    send_file 'app/public/spaces/filter-list.html'
+  end
+
+  post '/spaces/filterdates' do
+    session[:first_date] = params[:first_date]
+    session[:last_date]  = params[:last_date]
+
+    redirect '/spaces/filter-list'
+  end
+
+  get '/spaces/filter' do
+    filter = {first_date: session[:first_date],
+              last_date:  session[:last_date]
+            }.to_json
   end
 
   helpers do

@@ -19,6 +19,28 @@ $( document ).ready(function() {
     });
   });
 
+  listFilteredSpaces();
+
+  function listFilteredSpaces(){
+    $.getJSON('http://localhost:4567/spaces/filter', function(data) {
+      var firstDate = moment(data.first_date).format(" D MMM 'YY");
+      var lastDate = moment(data.last_date).format(" D MMM 'YY");
+
+      $.getJSON('http://localhost:4567/spaces/all', function(data) {
+        var dates = dateRange(data);
+
+        if (dates.includes(firstDate, lastDate)){
+          $('.available_space').attr('id', data.id);
+          $('#space_name').text('Name: ' + data.name);
+          $('#description').text('Description: ' + data.description);
+          $('#price').text('Price per night: £' + data.price);
+        } else {
+          $('.available_space').text('Sorry. No available spaces between these dates.');
+        }
+      });
+    });
+  }
+
   function listAllSpaces() {
     $.getJSON('http://localhost:4567/spaces/all', function(data) {
       var dates = dateRange(data);
@@ -32,6 +54,8 @@ $( document ).ready(function() {
       $('#space_id').attr('value', data.id);
 
       $('#name').text('Name: ' + data.name);
+      $('.space').attr('id', data.id);
+      $('#space_name').text('Name: ' + data.name);
       $('#description').text('Description: ' + data.description);
       $('#price').text('Price per night: £' + data.price);
       $('#dates').text('Available dates: ' +  dates );
@@ -61,7 +85,7 @@ $( document ).ready(function() {
     var endDate   = new Date(data.date[1]);
     var dateRange = [];
     while (startDate <= endDate){
-      dateRange.push(moment(startDate).format(" MMM Do 'YY"));
+      dateRange.push(moment(startDate).format(" D MMM 'YY"));
       startDate.setDate(startDate.getDate() + 1);
     }
     return dateRange;

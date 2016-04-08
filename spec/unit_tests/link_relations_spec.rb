@@ -8,8 +8,7 @@ describe User do
   end
 
   it 'pulls up spaces related to user' do
-    expect(record.spaces.map(&:name)).to include(name)
+    expect(record.spaces.map(&:name)).to include(space_name)
   end
-
 
 end

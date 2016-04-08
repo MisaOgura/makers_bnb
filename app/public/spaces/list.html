@@ -1,5 +1,13 @@
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script type="text/javascript" src="../scripts/jquery.min.js"></script>
+  <script type="text/javascript" src="../scripts/jquery-ui/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/scripts/jquery-ui/jquery-ui.css">
+  <script>
+  $(function() {
+    $( ".datepicker" ).datepicker();
+  });
+  </script>
 </head>
 
 <body>
@@ -8,6 +16,12 @@
   </div>
   <form class='toggle' action='/toggle' method='post'>
     <button id='button' name='unavailable'>Unavailable</button>
+  </form>
+
+  <form action='/spaces/filterdates' method="post">
+    <input type='text' name='first_date' class='datepicker' placeholder='enter start date'>
+    <input type='text' name='last_date' class='datepicker' placeholder='enter end date'>
+    <button>Find spaces</button>
   </form>
 
   <script src="../scripts/interface.js"></script>
