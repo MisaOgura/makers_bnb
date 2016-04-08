@@ -13,7 +13,7 @@ class SpaceBnB < Sinatra::Base
     @user = User.new
   end
 
-  get '/welcome' do #placeholder
+  get '/welcome' do
     send_file 'app/public/user/welcome.html'
   end
 
@@ -63,6 +63,7 @@ class SpaceBnB < Sinatra::Base
     send_file 'app/public/spaces/new.html'
   end
 
+
   post '/spaces' do
     user = User.first
     user.spaces.create(name: params[:space_name],
@@ -91,6 +92,23 @@ class SpaceBnB < Sinatra::Base
     space.update(available: false)
     space.update(date: [])
     redirect '/spaces/list'
+  end
+
+  get '/spaces/filter-list' do
+    send_file 'app/public/spaces/filter-list.html'
+  end
+
+  post '/spaces/filterdates' do
+    session[:first_date] = params[:first_date]
+    session[:last_date]  = params[:last_date]
+
+    redirect '/spaces/filter-list'
+  end
+
+  get '/spaces/filter' do
+    filter = {first_date: session[:first_date],
+              last_date:  session[:last_date]
+            }.to_json
   end
 
   helpers do
