@@ -115,9 +115,21 @@ class SpaceBnB < Sinatra::Base
   get '/requests' do
   end
 
+  post '/requests/new' do
+    p user = current_user
+    p renter = current_renter
+    space = Space.get(params[:space_id])
+    dates = params[:request_book].split(', ').each {|date| date.sub!(" ", "") }.uniq
+    redirect '/requests'
+  end
+
   helpers do
     def current_user
       current_user ||= User.get(session[:user_id])
+    end
+
+    def current_renter
+      current_renter ||= Renter.get(session[:user_id])
     end
   end
 

@@ -117,3 +117,38 @@ def no_name
   fill_in :password_confirmation, with: password_confirmation
   click_button 'Submit'
 end
+
+def request_no_user
+  Request.create(user_id: nil,
+                 renter_id: 1,
+                 space_id: 1,
+                 date: ["12/04/2015", "14/04/2015"])
+end
+
+def request_no_renter
+  Request.create(user_id: 1,
+                 renter_id: nil,
+                 space_id: 1,
+                 date: ["12/04/2015", "14/04/2015"])
+end
+
+def request_no_space
+  Request.create(user_id: 1,
+                 renter_id: 1,
+                 space_id: nil,
+                 date: ["12/04/2015", "14/04/2015"])
+end
+
+def request_no_dates
+  Request.create(user_id: 1,
+                 renter_id: 1,
+                 space_id: 1,
+                 date: nil)
+end
+
+def correct_request
+  Request.create(user_id: 1,
+                 renter_id: 1,
+                 space_id: 1,
+                 date: ["12/04/2015", "14/04/2015"])
+end

@@ -9,7 +9,7 @@ $( document ).ready(function() {
       if ($('input[type=checkbox]:checked').length <= 2) {
         $(this).attr('checked', 'yes');
         var first_date = $('#request_book').attr('value');
-        var second_date = $(this).val();
+        var second_date = $(this).val() + ', ';
         $('#request_book').attr('value', first_date + second_date);
       }
       else {
@@ -29,6 +29,7 @@ $( document ).ready(function() {
       $('.space').append("<li id='price'></li>");
       $('.space').append("<li id='dates'></li>");
       $('#button').attr('value', data.id);
+      $('#space_id').attr('value', data.id);
 
       $('#name').text('Name: ' + data.name);
       $('#description').text('Description: ' + data.description);
