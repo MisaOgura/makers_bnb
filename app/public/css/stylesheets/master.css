@@ -15,18 +15,36 @@ h6 {
   height: relative;
   width: 200px;
   margin: auto;
-  margin-top: 50;
+  margin-top: 50px;
   border-radius: 4px;
-
+  padding: 30px
 }
 
 #user-credentials {
-  padding: 30px;
-  padding-top: 0;
+  padding: 25px;
+
 
 }
 
 input {
   margin: 4px;
   padding: 3px;
+  width: 127px
+}
+
+textarea {
+  margin: 4px;
+  padding: 3px;
+  box-shadow: inset 1px 1px 1px #888888;
+  border: #888888;
+  width: 130px
+}
+
+button:hover {
+  color: #ec9f48;
+}
+
+button {
+  display: block;
+  margin: 10 auto;
 }
