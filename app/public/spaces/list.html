@@ -3,6 +3,7 @@
   <script type="text/javascript" src="../scripts/jquery.min.js"></script>
   <script type="text/javascript" src="../scripts/jquery-ui/jquery-ui.js"></script>
   <link rel="stylesheet" href="/scripts/jquery-ui/jquery-ui.css">
+  <link rel="stylesheet" type="text/css" href="/css/stylesheets/master.css">
   <script>
   $(function() {
     $( ".datepicker" ).datepicker();
@@ -18,9 +19,10 @@
     <button id='button' name='unavailable'>Unavailable</button>
   </form>
 
-  <form action='/spaces/filterdates' method="post">
+  <form id='user-credentials' action='/spaces/filterdates' method="post">
+    I want to rent from:
     <input type='text' name='first_date' class='datepicker' placeholder='enter start date'>
-    <input type='text' name='last_date' class='datepicker' placeholder='enter end date'>
+    to: <input type='text' name='last_date' class='datepicker' placeholder='enter end date'>
     <button>Find spaces</button>
   </form>
 

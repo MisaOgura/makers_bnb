@@ -1,11 +1,14 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/stylesheets/master.css">
+</head>
+
 <body>
-  Enter your username and password to log in.
-
-  <form id='user-credentials' action='/log-in' method='post'>
-    Email:<input id='email' type=text name='email'></input>
-    Password:<input id='password' type='password' name='password'></input>
-    <button id='Log in'>Log in</button>
-
-  </form>
-
+  <div class='credentials'>
+    <h6>Enter your username and password to log in.</h6>
+    <form id='user-credentials' action='/log-in' method='post'>
+      <input type=text required name='email' placeholder="Email"></input>
+      <input type='password' required name='password' placeholder="Password"></input>
+      <button>Log in</button>
+    </form>
+  </div>
 </body>

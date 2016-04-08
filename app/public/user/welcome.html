@@ -1,20 +1,21 @@
-<head>
-  <script
-  src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
-  </script>
+ <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
+</script>
+  <script src="../scripts/interface.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/stylesheets/master.css">
 </head>
 
 
 <body>
   <form action='/log-out' method='post'>
-    <input type='hidden' name='_method' value='delete'>
+    <input id='text-space' type='hidden' name='_method' value='delete'>
     <button id='log_out'>Log out</button>
   </form>
-  Thanks, you have been signed up!
+  <h6>Thanks, you have been signed up!</h6>
 
 <div class='user'>
   <p id='name'></p>
 </div>
 
-  <script src="../scripts/interface.js"></script>
+
 </body>
