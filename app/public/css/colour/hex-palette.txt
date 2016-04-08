@@ -1,0 +1,4 @@
+light beige  - #dedfcd (body)
+grey-green   - #b7c4b0  (headers)
+teal-blue    - #4a7f77 (headers)
+light-orange - #ec9f48 (highlights)
