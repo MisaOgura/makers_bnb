@@ -18,6 +18,7 @@ class User
   end
 
   has n, :spaces
+  has n, :requests
 
   def self.authenticate(email, password)
     user = first(email: email)

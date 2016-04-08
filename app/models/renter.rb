@@ -17,6 +17,7 @@ class Renter
     self.password_digest = BCrypt::Password.create(password)
   end
 
+  has n, :requests
   # has n, :spaces
 
   def self.authenticate(email, password)

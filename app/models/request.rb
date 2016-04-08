@@ -9,5 +9,6 @@ class Request
   property :confirmed, Boolean, default: false
 
   belongs_to :space
+  belongs_to :renter
 
 end

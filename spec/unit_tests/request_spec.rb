@@ -14,6 +14,10 @@ describe Request do
     it 'without dates' do
       expect{ request_no_dates }.not_to change(Request, :count)
     end
+
+    it 'without a renter' do
+      expect{ request_no_renter }.not_to change(Request, :count)
+    end
   end
 
   it 'should create a confirmation status defaulted to false' do

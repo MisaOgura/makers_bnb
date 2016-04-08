@@ -1,24 +1,21 @@
 describe Renter do
+  doubles
 
   before(:each) do
-    @renter = Renter.create(name: "Yas",
-                            username: 'YasNotJas',
-                            email: 'yasmin@green.com',
-                            password: 'vertically challenged',
-                            password_confirmation: 'vertically challenged')
+    register
   end
 
   it 'can create a new renter' do
-    expect(Renter.first.name).to eq('Yas')
+    expect(Renter.first.name).to eq(name)
   end
 
   it 'authenticates user sign in when given a valid email and password' do
-    authenticated_user = Renter.authenticate(@renter.email, @renter.password)
-    expect(authenticated_user).to eq @renter
+    authenticated_user = Renter.authenticate(email, password)
+    expect(authenticated_user).to eq Renter.last
   end
 
   it 'raises error when credentials are invalid' do
-    authenticated_user = Renter.authenticate(@renter.email, "wrong")
+    authenticated_user = Renter.authenticate(email, "wrong")
     expect(authenticated_user).to eq nil
   end
 end
