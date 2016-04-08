@@ -91,13 +91,20 @@ class SpaceBnB < Sinatra::Base
   end
 
   get '/spaces/filter-list' do
-    send_file 'app/public/spaces.filter-list.html'
+    send_file 'app/public/spaces/filter-list.html'
   end
 
-  get '/spaces/filterdates' do
-    filter = {start: params[:first_date],
-              finish:params[:last_date]
-             }.to_json
+  post '/spaces/filterdates' do
+    session[:first_date] = params[:first_date]
+    session[:last_date]  = params[:last_date]
+
+    redirect '/spaces/filter-list'
+  end
+
+  get '/spaces/filter' do
+    filter = {first_date: session[:first_date],
+              last_date:  session[:last_date]
+            }.to_json
   end
 
   helpers do

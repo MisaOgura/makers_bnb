@@ -4,31 +4,33 @@ $( document ).ready(function() {
   listFilteredSpaces();
 
   function listFilteredSpaces(){
-    $.getJSON('http://localhost:4567/spaces/filterdates', function(data) {
-      var firstDate = data.first_date;
-      console.log(data.first_date);
-      var lastDate = data.last_date;
-      console.log(firstDate);
+    $.getJSON('http://localhost:4567/spaces/filter', function(data) {
+      var firstDate = moment(data.first_date).format(" D MMM 'YY");
+      var lastDate = moment(data.last_date).format(" D MMM 'YY");
 
-      // $.getJSON('http://localhost:4567/spaces/all', function(data) {
-      //   var dates = dateRange(data);
-      //   if (dates.includes(firstDate, lastDate)){
-      //     $('.available_space').attr('id', data.id);
-      //     $('#space_name').text('Name: ' + data.name);
-      //     $('#description').text('Description: ' + data.description);
-      //     $('#price').text('Price per night: £' + data.price);
-      //     $('#dates').text('Available dates: ' +  dates );
-      //   } else {
-      //     $('.available_space').text('Sorry. No available spaces between these dates.');
-      //   }
-      // });
+      $.getJSON('http://localhost:4567/spaces/all', function(data) {
+        var dates = dateRange(data);
+        console.log(dates)
+        console.log(firstDate);
+        console.log(lastDate);
+
+        if (dates.includes(firstDate, lastDate)){
+          $('.available_space').attr('id', data.id);
+          $('#space_name').text('Name: ' + data.name);
+          $('#description').text('Description: ' + data.description);
+          $('#price').text('Price per night: £' + data.price);
+          // $('#dates').text('Available dates: ' +  dates );
+        } else {
+          $('.available_space').text('Sorry. No available spaces between these dates.');
+        }
+      });
     });
   }
 
   function listAllSpaces() {
     $.getJSON('http://localhost:4567/spaces/all', function(data) {
       var dates = dateRange(data);
-      $('.available_space').attr('id', data.id);
+      $('.space').attr('id', data.id);
       $('#space_name').text('Name: ' + data.name);
       $('#description').text('Description: ' + data.description);
       $('#price').text('Price per night: £' + data.price);
