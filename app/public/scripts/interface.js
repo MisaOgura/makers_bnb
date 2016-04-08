@@ -2,6 +2,7 @@ $( document ).ready(function() {
   
   listAllSpaces();
   returnUserData();
+  listRequest();
 
   $( document ).ajaxComplete(function(){
     $('input[type=checkbox]').on('change', function(){
@@ -90,4 +91,27 @@ $( document ).ready(function() {
     }
     return dateRange;
   }
+
+  function listRequest() {
+    $.getJSON('http://localhost:4567/requests/received', function(data) {
+      $('.all_requests_received').append("<div class='request_received'></div>");
+      $('.request_received').append("<li id='requested_name'></li>");
+      $('.request_received').append("<li id='confirmation_status'></li>");
+      $('.request_received').append("<li id='start_date'></li>");
+      $('.request_received').append("<li id='end_date'></li>");
+
+      $('#requested_name').text("Space name: " + data.space_name);
+      if(data.confirmation_status === false) {
+        $('#confirmation_status').text("Confirmation status: unconfirmed");
+      } else if(data.confirmation_status === true) {
+        $('#confirmation_status').text("Confirmation status: confirmed");
+      } else if(data.denied_status === true) {
+        $('#confirmation_status').text("Confirmation status: denied");
+      }
+
+      $('#start_date').text("Start date: " + data.date[0]);
+      $('#end_date').text("End date: " + data.date[1]);
+    });
+  }
+
 });

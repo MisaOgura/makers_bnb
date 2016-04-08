@@ -111,6 +111,16 @@ class SpaceBnB < Sinatra::Base
   end
 
   get '/requests' do
+    send_file 'app/public/requests/requests.html'
+  end
+
+  get '/requests/received' do
+    request = Request.last
+              {space_name: request.space.name,
+               confirmation_status: request.confirmed,
+               date: request.date,
+               denied_status: request.denied
+              }.to_json
   end
 
   post '/requests/new' do
