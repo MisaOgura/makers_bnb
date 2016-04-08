@@ -4,6 +4,7 @@
     <script type="text/javascript" src="../scripts/jquery.min.js"></script>
     <script type="text/javascript" src="../scripts/jquery-ui/jquery-ui.js"></script>
     <link rel="stylesheet" href="/scripts/jquery-ui/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="/css/stylesheets/master.css">
     <script>
     $(function() {
       $( ".datepicker" ).datepicker();
@@ -12,13 +13,16 @@
   </head>
 
   <body>
-    <form action='/spaces' method='post'>
-      <input type=text name="space_name" placeholder="Name of the space...">
-      <input type=text name="description" placeholder="Give a short description...">
-      <input type=text name="price" placeholder="Price...">
-      <input class="datepicker" type=text placeholder="start date" name='start_date'>
-      <input class="datepicker" type=text placeholder="end date" name='end_date'>
-      <input type=submit value="List this space"></input>
-    </form>
+    <div class='credentials'>
+      <form id='user-credentials' action='/spaces' method='post'>
+        <input type=text name="space_name" placeholder="Name of the space...">
+        <textarea rows='3' cols='18 '
+               name="description" placeholder="Give a short description..."></textarea>
+        <input type=text name="price" placeholder="Price...">
+        <input class="datepicker" type=text placeholder="start date" name='start_date'>
+        <input class="datepicker" type=text placeholder="end date" name='end_date'>
+        <input type=submit value="List this space"></input>
+      </form>
+    </div>
   </body>
 </html>
