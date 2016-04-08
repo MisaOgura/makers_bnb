@@ -90,6 +90,7 @@ class SpaceBnB < Sinatra::Base
               name: space.name,
               description: space.description,
               price: space.price,
+              available: space.available,
               date: space.date
             }.to_json
   end

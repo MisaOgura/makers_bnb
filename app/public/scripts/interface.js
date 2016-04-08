@@ -50,7 +50,9 @@ $( document ).ready(function() {
       $('.space').append("<p id='name'> 'Name: '</p>");
       $('.space').append("<li id='description'></li>");
       $('.space').append("<li id='price'></li>");
-      $('.space').append("<li id='dates'></li>");
+      if (data.available) {
+        $('.space').append("<li id='dates'></li>");
+      }
       $('#button').attr('value', data.id);
       $('#space_id').attr('value', data.id);
 
@@ -59,7 +61,9 @@ $( document ).ready(function() {
       $('#space_name').text('Name: ' + data.name);
       $('#description').text('Description: ' + data.description);
       $('#price').text('Price per night: £' + data.price);
-      $('#dates').text('Available dates: ' +  dates );
+      if (data.available) {
+        $('#dates').text('Available dates: ' +  dates );
+      }
 
       for (var i=0; i <= dates.length-1; i++){
         $('#available_dates').append("<input class='box' type='checkbox'><label class='available_dates'></label><br>");
