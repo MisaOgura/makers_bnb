@@ -1,7 +1,8 @@
 $( document ).ready(function() {
-  
+
   listAllSpaces();
   returnUserData();
+  listRequest();
 
   $( document ).ajaxComplete(function(){
     $('input[type=checkbox]').on('change', function(){
@@ -49,7 +50,9 @@ $( document ).ready(function() {
       $('.space').append("<p id='name'> 'Name: '</p>");
       $('.space').append("<li id='description'></li>");
       $('.space').append("<li id='price'></li>");
-      $('.space').append("<li id='dates'></li>");
+      if (data.available) {
+        $('.space').append("<li id='dates'></li>");
+      }
       $('#button').attr('value', data.id);
       $('#space_id').attr('value', data.id);
 
@@ -58,7 +61,9 @@ $( document ).ready(function() {
       $('#space_name').text('Name: ' + data.name);
       $('#description').text('Description: ' + data.description);
       $('#price').text('Price per night: £' + data.price);
-      $('#dates').text('Available dates: ' +  dates );
+      if (data.available) {
+        $('#dates').text('Available dates: ' +  dates );
+      }
 
       for (var i=0; i <= dates.length-1; i++){
         $('#available_dates').append("<input class='box' type='checkbox'><label class='available_dates'></label><br>");
@@ -90,4 +95,30 @@ $( document ).ready(function() {
     }
     return dateRange;
   }
+
+  function listRequest() {
+    $.getJSON('http://localhost:4567/requests/received', function(data) {
+      $('.all_requests_received').append("<div class='request_received'></div>");
+      $('.request_received').append("<li id='requested_name'></li>");
+      $('.request_received').append("<li id='confirmation_status'></li>");
+      $('.request_received').append("<li id='start_date'></li>");
+      $('.request_received').append("<li id='end_date'></li>");
+      $('#confirm_request_id').attr('value', data.id);
+      $('#deny_request_id').attr('value', data.id);
+
+      $('#requested_name').text("Space name: " + data.space_name);
+      if ((!data.confirmation_status) && (!data.denied_status)) {
+        $('#confirmation_status').text("Confirmation status: unconfirmed");
+      }
+      else if ((!data.confirmation_status) && (data.denied_status)) {
+        $('#confirmation_status').text("Confirmation status: denied");
+      }
+      else if (data.confirmation_status) {
+        $('#confirmation_status').text("Confirmation status: confirmed");
+      }
+      $('#start_date').text("Start date: " + data.date[0]);
+      $('#end_date').text("End date: " + data.date[1]);
+    });
+  }
+
 });

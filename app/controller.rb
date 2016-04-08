@@ -90,6 +90,7 @@ class SpaceBnB < Sinatra::Base
               name: space.name,
               description: space.description,
               price: space.price,
+              available: space.available,
               date: space.date
             }.to_json
   end
@@ -111,6 +112,17 @@ class SpaceBnB < Sinatra::Base
   end
 
   get '/requests' do
+    send_file 'app/public/requests/requests.html'
+  end
+
+  get '/requests/received' do
+    request = Request.last
+              {id: request.id,
+               space_name: request.space.name,
+               confirmation_status: request.confirmed,
+               date: request.date,
+               denied_status: request.denied
+              }.to_json
   end
 
   post '/requests/new' do
@@ -121,6 +133,19 @@ class SpaceBnB < Sinatra::Base
     request.user_id = space.user.id
     request.space_id = space.id
     request.save
+    redirect '/requests'
+  end
+
+  post '/requests/confirm' do
+    request = Request.get(params[:request_id])
+    request.update(confirmed: true)
+    request.space.update(available: false)
+    redirect '/requests'
+  end
+
+  post '/requests/deny' do
+    request = Request.get(params[:request_id])
+    request.update(denied: true)
     redirect '/requests'
   end
 
