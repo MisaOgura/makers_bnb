@@ -3,8 +3,8 @@ feature "user logout" do
   doubles
 
   before(:each) do
-    sign_up
-    log_in
+    register
+    visit '/welcome'
   end
 
   scenario 'logging out ends the user\'s session' do

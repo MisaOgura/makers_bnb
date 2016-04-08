@@ -10,7 +10,6 @@ class SpaceBnB < Sinatra::Base
 
   get '/' do
     send_file 'app/public/user/new.html'
-    @user = User.new
   end
 
   get '/welcome' do
@@ -27,8 +26,7 @@ class SpaceBnB < Sinatra::Base
       session[:user_id] = user.id
       redirect '/welcome'
     else
-      # flash error
-      redirect 'app/public/user/login.html'
+      redirect '/log-in'
     end
   end
 
@@ -38,14 +36,20 @@ class SpaceBnB < Sinatra::Base
   end
 
   post '/register' do
-    @user = User.new(name: params[:name],
+    user = Renter.create(name: params[:name],
                 username: params[:username],
                 email: params[:email],
                 password: params[:password],
                 password_confirmation: params[:password_confirmation])
-    if @user.save
-      session[:user_id] = @user.id
-      redirect '/spaces/new'
+
+    user = User.create(name: params[:name],
+                username: params[:username],
+                email: params[:email],
+                password: params[:password],
+                password_confirmation: params[:password_confirmation])
+    if user.save
+      session[:user_id] = user.id
+      redirect '/spaces'
     else
       redirect '/'
     end
@@ -63,14 +67,17 @@ class SpaceBnB < Sinatra::Base
     send_file 'app/public/spaces/new.html'
   end
 
+  get '/spaces' do
+    send_file 'app/public/spaces/index.html'
+  end
 
-  post '/spaces' do
-    user = User.first
+  post '/spaces/new' do
+    user = current_user
     user.spaces.create(name: params[:space_name],
-                       description: params[:description],
-                       price: params[:price],
-                       date: [params[:start_date], params[:end_date]])
-    redirect '/spaces/list'
+                description: params[:description],
+                price: params[:price],
+                date: [params[:start_date], params[:end_date]])
+    redirect '/spaces'
   end
 
   get '/spaces/list' do
@@ -78,7 +85,7 @@ class SpaceBnB < Sinatra::Base
   end
 
   get '/spaces/all' do
-    space = Space.first
+    space = Space.last
             { id: space.id,
               name: space.name,
               description: space.description,
@@ -88,10 +95,33 @@ class SpaceBnB < Sinatra::Base
   end
 
   post '/toggle' do
-    space = Space.first
+    space = Space.last
     space.update(available: false)
     space.update(date: [])
     redirect '/spaces/list'
+  end
+
+  post '/space/book' do
+    space = Space.get(params[:book])
+    redirect '/space/book'
+  end
+
+  get '/space/book' do
+    send_file 'app/public/spaces/booking.html'
+  end
+
+  get '/requests' do
+  end
+
+  post '/requests/new' do
+    space = Space.get(params[:space_id])
+    dates = params[:request_book].split(', ').each {|date| date.sub!(" ", "") }.uniq
+    renter = current_renter
+    request = renter.requests.new(date: dates)
+    request.user_id = space.user.id
+    request.space_id = space.id
+    request.save
+    redirect '/requests'
   end
 
   get '/spaces/filter-list' do
@@ -114,6 +144,10 @@ class SpaceBnB < Sinatra::Base
   helpers do
     def current_user
       current_user ||= User.get(session[:user_id])
+    end
+
+    def current_renter
+      current_renter ||= Renter.get(session[:user_id])
     end
   end
 

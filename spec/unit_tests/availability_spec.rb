@@ -4,7 +4,7 @@ describe Space do
   filter_doubles
 
   before do
-    sign_up
+    register
     add_space
 
   end

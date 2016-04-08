@@ -3,7 +3,7 @@ feature "Adding new space" do
   space_doubles
 
   before do
-    sign_up
+    register
     add_space
   end
 

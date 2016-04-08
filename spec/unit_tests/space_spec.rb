@@ -4,7 +4,7 @@ describe Space do
   space_doubles
 
   before do
-    sign_up
+    register
     add_space
   end
 
