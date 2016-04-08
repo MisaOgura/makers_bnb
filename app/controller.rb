@@ -56,7 +56,7 @@ class SpaceBnB < Sinatra::Base
   end
 
   get '/user/data' do
-    user_data = User.first
+    user_data = current_user
                 { id: user_data.id,
                   name: user_data.name,
                   username: user_data.username,
