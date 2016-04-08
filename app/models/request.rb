@@ -8,6 +8,6 @@ class Request
   property :date, PgArray, required: true
   property :confirmed, Boolean, default: false
 
-  belongs_to :user
+  belongs_to :space
 
 end

@@ -118,34 +118,23 @@ def no_name
   click_button 'Submit'
 end
 
-# def request_no_user
-#   Request.create(user_id: nil,
-#                  renter_id: 1,
-#                  space_id: 1,
-#                  date: ["12/04/2015", "14/04/2015"])
-# end
-#
-# def request_no_renter
-#   Request.create(user_id: 1,
-#                  renter_id: nil,
-#                  space_id: 1,
-#                  date: ["12/04/2015", "14/04/2015"])
-# end
-#
-# def request_no_space
-#   Request.create(user_id: 1,
-#                  renter_id: 1,
-#                  space_id: nil,
-#                  date: ["12/04/2015", "14/04/2015"])
-# end
-#
-# def request_no_dates
-#   Request.create(user_id: 1,
-#                  renter_id: 1,
-#                  space_id: 1,
-#                  date: nil)
-# end
-
-def make_request
+def request_no_user
   Request.create(date: ["12/04/2015", "14/04/2015"])
+end
+
+def request_no_space
+  register
+  Request.create(date: ["12/04/2015", "14/04/2015"])
+end
+
+def request_no_dates
+  register
+  add_space
+  space.requests.create(date: nil)
+end
+
+def correct_request
+  register
+  add_space
+  space.requests.create(date: ["12/04/2015", "14/04/2015"])
 end
