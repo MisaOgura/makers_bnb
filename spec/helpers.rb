@@ -143,10 +143,9 @@ def correct_request
   register
   add_space
   Renter.last
-  p request = Renter.last.requests.new(date: ["12/04/2015", "14/04/2015"])
-  p request.space_id = space.id
-  p record
-  p request.user_id = space.user.id
-  p request.save
-  p request
+  request = Renter.last.requests.new(date: ["12/04/2015", "14/04/2015"])
+  request.space_id = space.id
+  record
+  request.user_id = space.user.id
+  request.save
 end
