@@ -13,6 +13,10 @@ class SpaceBnB < Sinatra::Base
     @user = User.new
   end
 
+  get '/welcome' do
+    send_file 'app/public/user/welcome.html'
+  end
+
   get '/log-in' do
     send_file 'app/public/user/login.html'
   end

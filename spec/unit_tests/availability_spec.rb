@@ -1,13 +1,12 @@
 describe Space do
   doubles
   space_doubles
-
-  let(:first_date) { "11/04/2016" }
-  let(:last_date) { "12/04/2016" }
+  filter_doubles
 
   before do
     sign_up
     add_space
+
   end
 
   it 'is available by default on creation' do
