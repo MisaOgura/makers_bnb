@@ -10,16 +10,12 @@ $( document ).ready(function() {
 
       $.getJSON('http://localhost:4567/spaces/all', function(data) {
         var dates = dateRange(data);
-        // console.log(dates);
-        // console.log(firstDate);
-        // console.log(lastDate);
 
         if (dates.includes(firstDate, lastDate)){
           $('.available_space').attr('id', data.id);
           $('#space_name').text('Name: ' + data.name);
           $('#description').text('Description: ' + data.description);
           $('#price').text('Price per night: £' + data.price);
-          // $('#dates').text('Available dates: ' +  dates );
         } else {
           $('.available_space').text('Sorry. No available spaces between these dates.');
         }
