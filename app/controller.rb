@@ -139,9 +139,13 @@ class SpaceBnB < Sinatra::Base
   post '/requests/confirm' do
     request = Request.get(params[:request_id])
     request.update(confirmed: true)
-    p request.space
     request.space.update(available: false)
-    p request.space
+    redirect '/requests'
+  end
+
+  post '/requests/deny' do
+    request = Request.get(params[:request_id])
+    request.update(denied: true)
     redirect '/requests'
   end
 
