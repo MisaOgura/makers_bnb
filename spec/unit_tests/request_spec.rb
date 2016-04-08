@@ -24,4 +24,9 @@ describe Request do
     correct_request
     expect(Request.last.confirmed).to eq false
   end
+
+  it 'should create a denied status defaulted to false' do
+    correct_request
+    expect(Request.last.denied).to eq false
+  end
 end

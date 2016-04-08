@@ -118,6 +118,11 @@ def no_name
   click_button 'Submit'
 end
 
+def register_and_add_space
+  register
+  add_space
+end
+
 def request_no_user
   Request.create(date: ["12/04/2015", "14/04/2015"])
 end
@@ -128,24 +133,20 @@ def request_no_space
 end
 
 def request_no_dates
-  register
-  add_space
+  register_and_add_space
   space.requests.create(date: nil)
 end
 
 def request_no_renter
-  register
-  add_space
+  register_and_add_space
   space.requests.create(date: ["12/04/2015", "14/04/2015"])
 end
 
 def correct_request
-  register
-  add_space
+  register_and_add_space
   Renter.last
   request = Renter.last.requests.new(date: ["12/04/2015", "14/04/2015"])
   request.space_id = space.id
-  record
   request.user_id = space.user.id
   request.save
 end

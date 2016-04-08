@@ -18,7 +18,6 @@ class Renter
   end
 
   has n, :requests
-  # has n, :spaces
 
   def self.authenticate(email, password)
     user = first(email: email)
