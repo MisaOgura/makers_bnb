@@ -13,6 +13,4 @@ class SpaceBnB < Sinatra::Base
   get '/' do
     send_file 'app/public/user/new.html'
   end
-
-  # run! if app_file == $0
 end
