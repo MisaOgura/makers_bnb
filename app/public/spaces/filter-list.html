@@ -6,11 +6,21 @@
 <body>
   <div class="user_greeting"></div>
   <h3>List of spaces</h3>
-  <div class='available_space'>
-    <p id='space_name'></p>
-    <p id='description'></p>
-    <p id='price'></p>
-  </div>
+
+  List of available spaces
+  <div class='all_available_space'></div><br>
+  <div id='available_dates'></div>
+
+  <form action='/requests/new' method='post'>
+    <input id='request_book' type='hidden' name='request_book' value="">
+    <input id='space_id' type='hidden' name='space_id'>
+    <input type="submit" value="Request to book">
+  </form>
+
+  <form action='/log-out' method='post'>
+    <input id='text-space' type='hidden' name='_method' value='delete'>
+    <button id='log_out'>Log out</button>
+  </form>
 
   <script src="../scripts/interface.js"></script>
   <script src="../scripts/moment.min.js"></script>

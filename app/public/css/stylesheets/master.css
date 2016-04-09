@@ -10,7 +10,7 @@ h6 {
   padding-bottom: 0;
 }
 
-.credentials, .all_requests_received, .all_spaces, .available_space, #available_dates {
+.credentials, .all_requests_received, .all_spaces, .all_available_space, #available_dates {
   background-color: #B7C4B0;
   height: relative;
   width: 230px;

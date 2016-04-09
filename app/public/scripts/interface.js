@@ -3,6 +3,7 @@ $( document ).ready(function() {
   listAllSpaces();
   returnUserData();
   listRequest();
+  listFilteredSpaces();
 
   $( document ).ajaxComplete(function(){
     $('input[type=checkbox]').on('change', function(){
@@ -20,8 +21,6 @@ $( document ).ready(function() {
     });
   });
 
-  listFilteredSpaces();
-
   function listFilteredSpaces(){
     $.getJSON('http://localhost:4567/spaces/filter', function(data) {
       var firstDate = moment(data.first_date).format(" D MMM 'YY");
@@ -31,11 +30,19 @@ $( document ).ready(function() {
         var dates = dateRange(data);
 
         if (dates.includes(firstDate, lastDate)){
+          $('.all_available_space').append("<div class='available_space'></div>");
           $('.available_space').attr('id', data.id);
-          $('#space_name').text('Name: ' + data.name);
+
+          $('.available_space').append("<p id='name'> 'Name: '</p>");
+          $('#name').text('Name: ' + data.name);
+
+          $('.available_space').append("<li id='description'></li>");
           $('#description').text('Description: ' + data.description);
+
+          $('.available_space').append("<li id='price'></li>");
           $('#price').text('Price per night: £' + data.price);
-        } else {
+        }
+        else {
           $('.available_space').text('Sorry. No available spaces between these dates.');
         }
       });
@@ -48,22 +55,27 @@ $( document ).ready(function() {
       $('.all_spaces').append("<div class='space'></div>");
       $('.space').attr('id', data.id);
       $('.user_greeting').append("<p id='user_name'> 'Name: '</p>");
+
+      $('.space').append("<p id='name'> 'Name: '</p>");
+      $('#name').text('Name: ' + data.name);
+
       $('.space').append("<li id='description'></li>");
+      $('#description').text('Description: ' + data.description);
+
       $('.space').append("<li id='price'></li>");
+      $('#price').text('Price per night: £' + data.price);
+
       if (data.available) {
         $('.space').append("<li id='dates'></li>");
+        var startDate = moment(new Date(data.date[0])).format(" D MMM 'YY");
+        var endDate   = moment(new Date(data.date[1])).format(" D MMM 'YY");
+        $('#dates').text('Available dates: ' +  startDate + ' ~ ' + endDate);
       }
-      $('#button').attr('value', data.id);
-      $('#space_id').attr('value', data.id);
 
-      $('#name').text('Name: ' + data.name);
-      $('.space').attr('id', data.id);
-      $('#space_name').text('Name: ' + data.name);
-      $('#description').text('Description: ' + data.description);
-      $('#price').text('Price per night: £' + data.price);
-      if (data.available) {
-        $('#dates').text('Available dates: ' +  dates );
-      }
+      $('.space').append("<form class='book' action='/space/book' method='post'><button id='button' name='book'>Book this space</button></form>");
+      $('#button').attr('value', data.id);
+
+      $('#space_id').attr('value', data.id);
 
       for (var i=0; i <= dates.length-1; i++){
         $('#available_dates').append("<input class='box' type='checkbox'><label class='available_dates'></label><br>");
