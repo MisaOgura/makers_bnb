@@ -4,7 +4,7 @@ feature "user logout" do
 
   before(:each) do
     register
-    visit '/welcome'
+    visit '/spaces'
   end
 
   scenario 'logging out ends the user\'s session' do

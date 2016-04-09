@@ -1,9 +1,5 @@
 class SpaceBnB < Sinatra::Base
 
-  get '/welcome' do
-    send_file 'app/public/user/welcome.html'
-  end
-
   get '/log-in' do
     send_file 'app/public/user/login.html'
   end
@@ -12,7 +8,7 @@ class SpaceBnB < Sinatra::Base
     user = User.authenticate(params[:email], params[:password])
     if user
       session[:user_id] = user.id
-      redirect '/welcome'
+      redirect '/spaces'
     else
       redirect '/log-in'
     end
