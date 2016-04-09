@@ -47,7 +47,7 @@ $( document ).ready(function() {
       var dates = dateRange(data);
       $('.all_spaces').append("<div class='space'></div>");
       $('.space').attr('id', data.id);
-      $('.space').append("<p id='name'> 'Name: '</p>");
+      $('.user_greeting').append("<p id='user_name'> 'Name: '</p>");
       $('.space').append("<li id='description'></li>");
       $('.space').append("<li id='price'></li>");
       if (data.available) {
@@ -81,7 +81,7 @@ $( document ).ready(function() {
   function returnUserData() {
     $.getJSON('http://localhost:4567/user/data', function(data) {
       $('.user').attr('id', data.id);
-      $('#name').text('Hey, ' + data.name);
+      $('#user_name').text('Hey, ' + data.name);
     });
   }
 
