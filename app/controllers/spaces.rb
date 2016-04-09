@@ -21,17 +21,6 @@ class SpaceBnB < Sinatra::Base
     send_file 'app/public/spaces/list.html'
   end
 
-  get '/spaces/all' do
-    space = Space.last
-            { id: space.id,
-              name: space.name,
-              description: space.description,
-              price: space.price,
-              available: space.available,
-              date: space.date
-            }.to_json
-  end
-
   post '/toggle' do
     space = Space.last
     space.update(available: false)
@@ -58,12 +47,6 @@ class SpaceBnB < Sinatra::Base
     session[:last_date]  = params[:last_date]
 
     redirect '/spaces/filter-list'
-  end
-
-  get '/spaces/filter' do
-    filter = {first_date: session[:first_date],
-              last_date:  session[:last_date]
-            }.to_json
   end
 
 end

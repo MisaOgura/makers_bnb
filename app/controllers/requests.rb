@@ -4,16 +4,6 @@ class SpaceBnB < Sinatra::Base
     send_file 'app/public/requests/requests.html'
   end
 
-  get '/requests/received' do
-    request = Request.last
-              {id: request.id,
-               space_name: request.space.name,
-               confirmation_status: request.confirmed,
-               date: request.date,
-               denied_status: request.denied
-              }.to_json
-  end
-
   post '/requests/new' do
     space = Space.get(params[:space_id])
     dates = params[:request_book].split(', ').each {|date| date.sub!(" ", "") }.uniq
