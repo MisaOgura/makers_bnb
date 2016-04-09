@@ -1,7 +1,24 @@
-Unstaged changes after reset:
-M	app/controllers/requests.rb
-M	app/controllers/spaces.rb
-M	app/public/scripts/interface.js
-M	app/public/spaces/booking.html
-M	app/public/spaces/filter-list.html
-D	app/public/spaces/index.html
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/stylesheets/master.css">
+</head>
+
+<body>
+  List of available spaces
+  <div class='all_available_space'></div><br>
+  <div id='available_dates'></div>
+
+  <form action='/requests/new' method='post'>
+    <input id='request_book' type='hidden' name='request_book' value="">
+    <input id='space_id' type='hidden' name='space_id'>
+    <input type="submit" value="Request to book">
+  </form>
+
+  <form action='/log-out' method='post'>
+    <input id='text-space' type='hidden' name='_method' value='delete'>
+    <button id='log_out'>Log out</button>
+  </form>
+
+  <script src="../scripts/interface.js"></script>
+  <script src="../scripts/moment.min.js"></script>
+</body>
