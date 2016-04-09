@@ -1,9 +1,13 @@
 <head>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/stylesheets/master.css">
 </head>
 
 <body>
-  <div class='all_requests_received'></div>
+
+  <div class='all_requests_received'>
+    <h3>Requests I've received</h3>
+  </div>
 
   <form action='/requests/confirm' method='post'>
     <input id='confirm_request_id' name='request_id' type='hidden'>

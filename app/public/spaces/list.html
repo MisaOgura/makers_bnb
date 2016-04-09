@@ -12,16 +12,18 @@
 </head>
 
 <body>
+  <div class="user_greeting"></div>
+  <h3>List of spaces</h3>
+  <div class="all_spaces"></div>
+
+  <!-- <form class='toggle' action='/toggle' method='post'>
+    <button id='button' name='unavailable'>Unavailable</button>
+  </form> -->
 
   <form action='/spaces/new'>
     <button>List a space</button>
   </form>
 
-  List of spaces
-  <div class="all_spaces"></div>
-  <!-- <form class='toggle' action='/toggle' method='post'>
-    <button id='button' name='unavailable'>Unavailable</button>
-  </form> -->
   <form id='user-credentials' action='/spaces/filter-list' method="post">
     I want to rent from:
     <input type='text' name='first_date' class='datepicker' placeholder='enter start date'>

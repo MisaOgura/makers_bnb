@@ -10,10 +10,10 @@ h6 {
   padding-bottom: 0;
 }
 
-.credentials {
+.credentials, .all_requests_received, .all_spaces, .all_available_space, #available_dates {
   background-color: #B7C4B0;
   height: relative;
-  width: 200px;
+  width: 230px;
   margin: auto;
   margin-top: 50px;
   border-radius: 4px;
@@ -22,8 +22,6 @@ h6 {
 
 #user-credentials {
   padding: 25px;
-
-
 }
 
 input {
@@ -47,4 +45,33 @@ button:hover {
 button {
   display: block;
   margin: 10 auto;
+}
+
+input[type="submit"] {
+  display: block;
+  margin: 10 auto;
+}
+
+input[type="submit"]:hover {
+  color: #ec9f48;
+}
+
+input[type="checkbox"] {
+  width: 10px;
+  margin-left: 31%;
+}
+
+input[type="text"], input[type="password"] {
+  margin-left: 15%;
+}
+
+
+li {
+  list-style-type: none;
+  padding-top: 10px;
+}
+
+h3 {
+  margin: relative;
+  text-align: center;
 }
