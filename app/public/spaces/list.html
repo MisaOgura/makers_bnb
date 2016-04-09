@@ -12,18 +12,26 @@
 </head>
 
 <body>
-  List of spaces
-  <div class="all_spaces">
-  </div>
-  <form class='toggle' action='/toggle' method='post'>
-    <button id='button' name='unavailable'>Unavailable</button>
+
+  <form action='/spaces/new'>
+    <button>List a space</button>
   </form>
 
-  <form id='user-credentials' action='/spaces/filterdates' method="post">
+  List of spaces
+  <div class="all_spaces"></div>
+  <!-- <form class='toggle' action='/toggle' method='post'>
+    <button id='button' name='unavailable'>Unavailable</button>
+  </form> -->
+  <form id='user-credentials' action='/spaces/filter-list' method="post">
     I want to rent from:
     <input type='text' name='first_date' class='datepicker' placeholder='enter start date'>
     to: <input type='text' name='last_date' class='datepicker' placeholder='enter end date'>
     <button>Find spaces</button>
+  </form>
+
+  <form action='/log-out' method='post'>
+    <input id='text-space' type='hidden' name='_method' value='delete'>
+    <button id='log_out'>Log out</button>
   </form>
 
   <script src="../scripts/interface.js"></script>
