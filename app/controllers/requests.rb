@@ -5,6 +5,7 @@ class SpaceBnB < Sinatra::Base
   end
 
   post '/requests/new' do
+    p params[:request_book]
     space = Space.get(params[:space_id])
     dates = params[:request_book].split(', ').each {|date| date.sub!(" ", "") }.uniq
     renter = current_renter

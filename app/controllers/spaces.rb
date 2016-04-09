@@ -5,7 +5,7 @@ class SpaceBnB < Sinatra::Base
   end
 
   get '/spaces' do
-    send_file 'app/public/spaces/index.html'
+    send_file 'app/public/spaces/list.html'
   end
 
   post '/spaces/new' do
@@ -17,10 +17,6 @@ class SpaceBnB < Sinatra::Base
     redirect '/spaces'
   end
 
-  get '/spaces/list' do
-    send_file 'app/public/spaces/list.html'
-  end
-
   post '/toggle' do
     space = Space.last
     space.update(available: false)
@@ -28,24 +24,22 @@ class SpaceBnB < Sinatra::Base
     redirect '/spaces/list'
   end
 
+  get '/space/book' do
+    send_file 'app/public/spaces/booking.html'
+  end
+
   post '/space/book' do
     space = Space.get(params[:book])
     redirect '/space/book'
   end
 
-  get '/space/book' do
-    send_file 'app/public/spaces/booking.html'
-  end
-
-
   get '/spaces/filter-list' do
     send_file 'app/public/spaces/filter-list.html'
   end
 
-  post '/spaces/filterdates' do
+  post '/spaces/filter-list' do
     session[:first_date] = params[:first_date]
     session[:last_date]  = params[:last_date]
-
     redirect '/spaces/filter-list'
   end
 
