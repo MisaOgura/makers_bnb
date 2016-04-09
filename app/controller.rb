@@ -9,6 +9,7 @@ class SpaceBnB < Sinatra::Base
   require_relative 'controllers/users'
   require_relative 'controllers/spaces'
   require_relative 'controllers/requests'
+  require_relative 'controllers/ajax'
 
   get '/' do
     send_file 'app/public/user/new.html'
