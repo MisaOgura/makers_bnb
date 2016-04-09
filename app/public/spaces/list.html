@@ -13,29 +13,28 @@
 
 <body>
   <div class="user_greeting"></div>
-  <h3>List of spaces</h3>
-  <div class="all_spaces"></div>
+    <h3>List of spaces</h3>
+      <div class="all_spaces">
+      <!-- <form class='toggle' action='/toggle' method='post'>
+        <button id='button' name='unavailable'>Unavailable</button>
+      </form> -->
+        <form action='/spaces/new'>
+          <button>List a space</button>
+        </form>
 
-  <!-- <form class='toggle' action='/toggle' method='post'>
-    <button id='button' name='unavailable'>Unavailable</button>
-  </form> -->
+        <form style="text-align: center;" id='user-credentials' action='/spaces/filter-list' method="post">
+          <p>I want to rent from:</p>
+          <input type='text' name='first_date' class='datepicker' placeholder='enter start date'>
+          <p>to:</p>
+          <input type='text' name='last_date' class='datepicker' placeholder='enter end date'>
+          <button>Find spaces</button>
+        </form>
 
-  <form action='/spaces/new'>
-    <button>List a space</button>
-  </form>
-
-  <form id='user-credentials' action='/spaces/filter-list' method="post">
-    I want to rent from:
-    <input type='text' name='first_date' class='datepicker' placeholder='enter start date'>
-    to: <input type='text' name='last_date' class='datepicker' placeholder='enter end date'>
-    <button>Find spaces</button>
-  </form>
-
-  <form action='/log-out' method='post'>
-    <input id='text-space' type='hidden' name='_method' value='delete'>
-    <button id='log_out'>Log out</button>
-  </form>
-
+        <form action='/log-out' method='post'>
+          <input id='text-space' type='hidden' name='_method' value='delete'>
+          <button id='log_out'>Log out</button>
+        </form>
+      </div>
   <script src="../scripts/interface.js"></script>
   <script src="../scripts/moment.min.js"></script>
 </body>

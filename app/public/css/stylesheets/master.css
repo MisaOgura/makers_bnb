@@ -25,7 +25,8 @@ h6 {
 }
 
 input {
-  margin: 4px;
+  margin: 5px;
+  display: block;
   padding: 3px;
   width: 127px
 }
@@ -33,6 +34,8 @@ input {
 textarea {
   margin: 4px;
   padding: 3px;
+  display: block;
+  margin-left: 27px;
   box-shadow: inset 1px 1px 1px #888888;
   border: #888888;
   width: 130px
@@ -44,7 +47,7 @@ button:hover {
 
 button {
   display: block;
-  margin: 10 auto;
+  margin: auto;
 }
 
 input[type="submit"] {
