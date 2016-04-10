@@ -39,7 +39,7 @@ $( document ).ready(function() {
         if (dates.includes(firstDate, lastDate)){
           $('.filtered_space').attr('id', data.id);
 
-          $('.filtered_space').append("<p id='name'> 'Name: '</p>");
+          $('.filtered_space').append("<h4 id='name'> 'Name: '</h4>");
           $('#name').text('Name: ' + data.name);
 
           $('.filtered_space').append("<li id='description'></li>");
@@ -64,7 +64,7 @@ $( document ).ready(function() {
       $('.space').attr('id', data.id);
       $('.user_greeting').append("<p id='user_name'> 'Name: '</p>");
 
-      $('.space').append("<p id='name'> 'Name: '</p>");
+      $('.space').append("<h4 id='name'> 'Name: '</h4>");
       $('#name').text('Name: ' + data.name);
 
       $('.space').append("<li id='description'></li>");
@@ -80,7 +80,7 @@ $( document ).ready(function() {
         $('#dates').text('Available dates: ' +  startDate + ' ~ ' + endDate);
       }
 
-      $('.space').append("<form class='book' action='/space/book' method='post'><button id='button' name='book'>Book this space</button></form>");
+      $('.space').append("<br><form class='book' action='/space/book' method='post'><button id='button' name='book'>Book this space</button></form>");
       $('#button').attr('value', data.id);
 
       $('#space_id').attr('value', data.id);
