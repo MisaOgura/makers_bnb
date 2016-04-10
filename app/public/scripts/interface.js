@@ -26,24 +26,32 @@ $( document ).ready(function() {
       var firstDate = moment(data.first_date).format(" D MMM 'YY");
       var lastDate = moment(data.last_date).format(" D MMM 'YY");
 
+      console.log(firstDate);
+      console.log(lastDate);
+
       $.getJSON('http://localhost:4567/spaces/all', function(data) {
         var dates = dateRange(data);
 
-        if (dates.includes(firstDate, lastDate)){
-          $('.all_available_space').append("<div class='available_space'></div>");
-          $('.available_space').attr('id', data.id);
+        console.log(dates);
 
-          $('.available_space').append("<p id='name'> 'Name: '</p>");
+        $('.all_filtered_space').append("<div class='filtered_space'></div>");
+
+        if (dates.includes(firstDate, lastDate)){
+          $('.filtered_space').attr('id', data.id);
+
+          $('.filtered_space').append("<p id='name'> 'Name: '</p>");
           $('#name').text('Name: ' + data.name);
 
-          $('.available_space').append("<li id='description'></li>");
+          $('.filtered_space').append("<li id='description'></li>");
           $('#description').text('Description: ' + data.description);
 
-          $('.available_space').append("<li id='price'></li>");
+          $('.filtered_space').append("<li id='price'></li>");
           $('#price').text('Price per night: £' + data.price);
+
+          $('.filtered_space').append("<div id='available_dates'></div>");
         }
         else {
-          $('.available_space').text('Sorry. No available spaces between these dates.');
+          $('.filtered_space').text('Sorry. No available spaces between these dates.');
         }
       });
     });
