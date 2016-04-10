@@ -5,7 +5,6 @@ $( document ).ready(function() {
 
   $( document ).ajaxComplete(function(){
     $('input[type=checkbox]').on('change', function(){
-      console.log($('input[type=checkbox]:checked').length);
       if ($('input[type=checkbox]:checked').length <= 2) {
         $(this).attr('checked', 'yes');
         var first_date = $('#request_book').attr('value');
@@ -47,9 +46,8 @@ $( document ).ready(function() {
     var startDate = new Date(data.date[0]);
     var endDate   = new Date(data.date[1]);
     var dateRange = [];
-    while (startDate <= endDate){
-      dateRange.push(moment(startDate).format(" D MMM 'YY"));
-      startDate.setDate(startDate.getDate() + 1);
+    for(var i = startDate.getDate(); i <= endDate.getDate(); i++){
+      dateRange.push(moment(startDate.setDate(i)).format(" D MMM 'YY"));
     }
     return dateRange;
   }
