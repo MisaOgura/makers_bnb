@@ -1,5 +1,4 @@
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script type="text/javascript" src="../scripts/jquery.min.js"></script>
   <script type="text/javascript" src="../scripts/jquery-ui/jquery-ui.js"></script>
   <link rel="stylesheet" href="/scripts/jquery-ui/jquery-ui.css">
@@ -12,29 +11,38 @@
 </head>
 
 <body>
-  <div class="user_greeting"></div>
-    <h3>List of spaces</h3>
-      <div class="all_spaces">
-      <!-- <form class='toggle' action='/toggle' method='post'>
-        <button id='button' name='unavailable'>Unavailable</button>
-      </form> -->
-        <form action='/spaces/new'>
-          <button>List a space</button>
-        </form>
 
-        <form style="text-align: center;" id='user-credentials' action='/spaces/filter-list' method="post">
-          <p>I want to rent from:</p>
-          <input type='text' name='first_date' class='datepicker' placeholder='enter start date'>
-          <p>to:</p>
-          <input type='text' name='last_date' class='datepicker' placeholder='enter end date'>
-          <button>Find spaces</button>
-        </form>
+  <center><div class="user"></div></center>
 
-        <form action='/log-out' method='post'>
-          <input id='text-space' type='hidden' name='_method' value='delete'>
-          <button id='log_out'>Log out</button>
-        </form>
-      </div>
-  <script src="../scripts/interface.js"></script>
+  <div class='list'>
+    <h4>Want to list your spaces?</h4>
+    <form action='/spaces/new'>
+      <button>List a space</button>
+    </form>
+  </div>
+
+  <div class='filter'>
+    <h4>Already know the dates for your holiday?</h4>
+    <form style="text-align: center;" id='user-credentials' action='/spaces/filter-list' method="post">
+      <p>I want a space to stay from:</p>
+      <input type='text' name='first_date' class='datepicker' placeholder='enter start date'>
+      <p>to:</p>
+      <input type='text' name='last_date' class='datepicker' placeholder='enter end date'>
+      <br><button>Find spaces</button>
+    </form>
+  </div>
+  <br>
+
+  <center><h4>All the spaces advertised</h4></center>
+  <div class="all_spaces"></div>
+
+  <br>
+  <form action='/log-out' method='post'>
+    <input id='text-space' type='hidden' name='_method' value='delete'>
+    <button id='log_out'>Log out</button>
+  </form>
+
+  <script src="../scripts/interface_helper.js"></script>
+  <script src="../scripts/interface_list.js"></script>
   <script src="../scripts/moment.min.js"></script>
 </body>

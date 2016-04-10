@@ -34,5 +34,4 @@ class SpaceBnB < Sinatra::Base
                denied_status: request.denied
               }.to_json
   end
-
 end

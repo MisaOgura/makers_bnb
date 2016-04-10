@@ -38,5 +38,5 @@ class SpaceBnB < Sinatra::Base
       redirect '/'
     end
   end
-  
+
 end
