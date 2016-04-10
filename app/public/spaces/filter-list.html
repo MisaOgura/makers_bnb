@@ -6,7 +6,7 @@
 <body>
   <div class="user_greeting"></div>
   <h3>List of available spaces</h3>
-  
+
   <div class='all_filtered_space'></div><br>
 
   <form action='/requests/new' method='post'>
@@ -19,7 +19,8 @@
     <input id='text-space' type='hidden' name='_method' value='delete'>
     <button id='log_out'>Log out</button>
   </form>
-
+  
+  <script src="../scripts/interface_helper.js"></script>
   <script src="../scripts/interface_filter-list.js"></script>
   <script src="../scripts/moment.min.js"></script>
 </body>

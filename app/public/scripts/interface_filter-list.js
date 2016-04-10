@@ -12,6 +12,7 @@ $( document ).ready(function() {
         $('.all_filtered_space').append("<div class='filtered_space'></div>");
 
         if (dates.includes(firstDate, lastDate)){
+          $('#space_id').attr('value', data.id);
           $('.filtered_space').attr('id', data.id);
           $('.filtered_space').append("<h4 id='name'> 'Name: '</h4>");
           $('#name').text('Name: ' + data.name);
@@ -36,15 +37,5 @@ $( document ).ready(function() {
         }
       });
     });
-  }
-
-  function dateRange(data){
-    var startDate = new Date(data.date[0]);
-    var endDate   = new Date(data.date[1]);
-    var dateRange = [];
-    for(var i = startDate.getDate(); i <= endDate.getDate(); i++){
-      dateRange.push(moment(startDate.setDate(i)).format(" D MMM 'YY"));
-    }
-    return dateRange;
   }
 });
