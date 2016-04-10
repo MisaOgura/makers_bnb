@@ -9,16 +9,12 @@ listAllSpaces();
       $('.all_spaces').append("<div class='space'></div>");
       $('.space').attr('id', data.id);
       $('.user_greeting').append("<p id='user_name'> 'Name: '</p>");
-
       $('.space').append("<h4 id='name'> 'Name: '</h4>");
       $('#name').text('Name: ' + data.name);
-
       $('.space').append("<li id='description'></li>");
       $('#description').text('Description: ' + data.description);
-
       $('.space').append("<li id='price'></li>");
       $('#price').text('Price per night: £' + data.price);
-
       if (data.available) {
         $('.space').append("<li id='dates'></li>");
         var startDate = moment(new Date(data.date[0])).format("D MMM 'YY");
