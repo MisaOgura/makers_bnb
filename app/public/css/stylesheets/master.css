@@ -1,6 +1,17 @@
 body {
+  position: relative;
+  margin-top: 110px;
   background-color: #DEDFCD;
   font-family: HelveticaNeue-light, Helvetica, Arial, sans-serif;
+}
+
+#navbar {
+  background-color: #B7C4B0;
+  position: fixed;
+  width: 100%;
+  height: 53px;
+  top: 0;
+  left: 0;
 }
 
 h6 {
@@ -8,6 +19,11 @@ h6 {
   text-align: center;
   padding: 15px;
   padding-bottom: 0;
+}
+
+h3 {
+  margin: relative;
+  text-align: center;
 }
 
 .credentials, .all_requests_received, .all_spaces, .all_available_space, .filtered_space, .list, .filter, #available_dates {
@@ -51,6 +67,23 @@ button {
   margin: auto;
 }
 
+header, ul, li {
+  display: inline-flex;
+  list-style-type: none;
+  margin: 0;
+  padding: .3em;
+}
+
+input.datepicker {
+  display: inline-flex;
+  position: -20px;
+  list-style-type: none;
+  margin: 0;
+  padding: 2px;
+  width: 100%;
+
+}
+
 input[type="submit"] {
   display: block;
   margin: 10 auto;
@@ -69,13 +102,11 @@ input[type="text"], input[type="password"] {
   margin-left: 15%;
 }
 
-
 li {
   list-style-type: none;
   padding-top: 10px;
 }
 
-h3 {
-  margin: relative;
-  text-align: center;
+.user {
+  font-weight: bold;
 }
