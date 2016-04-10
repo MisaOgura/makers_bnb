@@ -1,10 +1,9 @@
 <head>
-  <script type="text/javascript" src="../scripts/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="/css/stylesheets/master.css">
+  <link rel="import" href="/scripts/master.html">
 </head>
 
 <body>
-  <div class="user_greeting"></div>
+  <header id='navbar'></header>
 
   <div id='available_dates'>
       <h5>Available dates for this space, please pick a start date and end date:</h5>
@@ -13,15 +12,7 @@
   <form action='/requests/new' method='post'>
     <input id='request_book' type='hidden' name='request_book' value="">
     <input id='space_id' type='hidden' name='space_id'>
-    <input type="submit" value="Request to book">
+    <button>Request to book</button>
   </form>
 
-  <form action='/log-out' method='post'>
-    <input id='text-space' type='hidden' name='_method' value='delete'>
-    <button id='log_out'>Log out</button>
-  </form>
-  
-  <script src="../scripts/interface_helper.js"></script>
-  <script src="../scripts/interface_booking.js"></script>
-  <script src="../scripts/moment.min.js"></script>
 </body>
