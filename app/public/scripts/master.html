@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/stylesheets/master.css">
+    <link rel="stylesheet" href="/scripts/jquery-ui/jquery-ui.css">
+    <script type="text/javascript" src="../scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery-ui/jquery-ui.js"></script>
+
+    <script>
+    $.get("/scripts/navbar.html", function(data){
+        $("#navbar").replaceWith(data);
+    });
+    </script>
+  </head>
+
+  <body>
+
+    <script src="../scripts/interface_helper.js"></script>
+    <script src="../scripts/interface_list.js"></script>
+    <script src="../scripts/interface_filter-list.js"></script>
+    <script src="../scripts/interface_booking.js"></script>
+    <script src="../scripts/moment.min.js"></script>
+
+  </body>
+</html>

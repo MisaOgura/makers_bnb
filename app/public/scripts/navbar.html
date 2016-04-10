@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+    $(function() {
+      $( ".datepicker" ).datepicker();
+    });
+    </script>
+
+  </head>
+  <body>
+    <header id="navbar">
+      <ul>
+      <li><center><div class="user"></div></center></li>
+
+      <li><form action='/spaces/new'>
+          <button>I want to list a space</button>
+        </form></li>
+
+      <li>I want a space to stay from:</li>
+      <form action='/spaces/filter-list' method="post">
+      <li><input type='text' name='first_date'
+          class='datepicker' placeholder='enter start date'></li>
+      <li>to:</li>
+      <li><input type='text' name='last_date'
+          class='datepicker' placeholder='enter end date'></li>
+      <li><button>Find spaces</button></li>
+      </form>
+      <li><form action='/log-out' method='post'>
+          <input id='text-space' type='hidden' name='_method' value='delete'>
+          <button id='log_out'>Log out</button>
+        </form></li>
+      </ul>
+    </header>
+  </body>
+</html>

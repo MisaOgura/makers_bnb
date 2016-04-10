@@ -1,18 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script type="text/javascript" src="../scripts/jquery.min.js"></script>
-    <script type="text/javascript" src="../scripts/jquery-ui/jquery-ui.js"></script>
-    <link rel="stylesheet" href="/scripts/jquery-ui/jquery-ui.css">
-    <link rel="stylesheet" type="text/css" href="/css/stylesheets/master.css">
-    <script>
-    $(function() {
-      $( ".datepicker" ).datepicker();
-    });
-    </script>
+    <link rel="import" href="/scripts/master.html">
   </head>
 
   <body>
+    <header id='navbar'></header>
 
     <div class='credentials'>
       <form id='user-credentials' action='/spaces/new' method='post'>
@@ -25,11 +18,6 @@
         <button>List this space</input>
       </form>
     </div>
-
-    <form action='/log-out' method='post'>
-      <input id='text-space' type='hidden' name='_method' value='delete'>
-      <button id='log_out'>Log out</button>
-    </form>
 
   </body>
 </html>
