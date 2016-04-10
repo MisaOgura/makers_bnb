@@ -20,8 +20,6 @@ class SpaceBnB < Sinatra::Base
   end
 
   get '/spaces/filter' do
-    p session[:first_date]
-    p session[:last_date]
     filter = {first_date: session[:first_date],
               last_date:  session[:last_date]
             }.to_json
