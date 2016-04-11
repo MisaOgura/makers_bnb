@@ -9,9 +9,12 @@
 
   </head>
   <body>
+    <script src="../scripts/interface_list.js"></script>
     <header id="navbar">
+      <a href='/spaces'><img src='/css/images/458761659.png'></a>
+
       <ul>
-      <li><center><div class="user"></div></center></li>
+      <li><div class="user"></div></li>
 
       <li><form action='/spaces/new'>
           <button>I want to list a space</button>
@@ -26,10 +29,6 @@
           class='datepicker' placeholder='enter end date'></li>
       <li><button>Find spaces</button></li>
       </form>
-      <li><form action='/spaces'>
-          <button>Back to Home</button>
-        </form>
-      </li>
       <li><form action='/log-out' method='post'>
           <input id='text-space' type='hidden' name='_method' value='delete'>
           <button id='log_out'>Log out</button>
